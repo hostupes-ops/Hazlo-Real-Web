@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HazloReal — Plataforma</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+–dp: #2D1B69;
+–mid: #5B3BB5;
+–bright: #7C4DFF;
+–light: #B39DFF;
+–pale: #EDE7FF;
+–accent: #FF6B35;
+–green: #22C55E;
+–bg: #0A0618;
+–surface: #130D2E;
+–card: #1A1040;
+–border: rgba(124,77,255,0.15);
+–text: #F0ECFF;
+–muted: rgba(240,236,255,0.5);
+–font-head: ‘Syne’, sans-serif;
+–font-body: ‘DM Sans’, sans-serif;
+}
+
+body {
+font-family: var(–font-body);
+background: var(–bg);
+color: var(–text);
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+/* ── SCREENS ── */
+.screen { display: none; min-height: 100vh; }
+.screen.active { display: flex; }
+
+/* ════════════════════════════════
+AUTH SCREEN
+════════════════════════════════ */
+#authScreen {
+align-items: center;
+justify-content: center;
+position: relative;
+overflow: hidden;
+padding: 24px;
+}
+
+.auth-bg {
+position: fixed;
+inset: 0;
+z-index: 0;
+overflow: hidden;
+}
+.auth-orb {
+position: absolute;
+border-radius: 50%;
+filter: blur(90px);
+}
+.orb-a { width: 500px; height: 500px; background: #4A2A9A; top: -150px; left: -100px; opacity: 0.6; animation: fa 9s ease-in-out infinite alternate; }
+.orb-b { width: 400px; height: 400px; background: #7C4DFF; bottom: -100px; right: -80px; opacity: 0.45; animation: fb 11s ease-in-out infinite alternate; }
+.orb-c { width: 250px; height: 250px; background: #FF6B35; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0.1; animation: fc 7s ease-in-out infinite alternate; }
+
+@keyframes fa { to { transform: translate(50px, 40px) scale(1.1); } }
+@keyframes fb { to { transform: translate(-40px, -50px) scale(1.08); } }
+@keyframes fc { to { transform: translate(-50%,-50%) scale(1.4); } }
+
+.auth-box {
+position: relative;
+z-index: 1;
+background: rgba(19,13,46,0.85);
+border: 1px solid var(–border);
+border-radius: 28px;
+padding: 44px 40px;
+width: 100%;
+max-width: 440px;
+backdrop-filter: blur(20px);
+box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+animation: slideUp 0.5s ease both;
+}
+
+@keyframes slideUp {
+from { opacity: 0; transform: translateY(28px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-logo {
+font-family: var(–font-head);
+font-size: 1.5rem;
+font-weight: 800;
+color: var(–text);
+text-align: center;
+margin-bottom: 28px;
+letter-spacing: -0.5px;
+}
+.auth-logo span { color: var(–bright); }
+
+.auth-tabs {
+display: flex;
+background: rgba(255,255,255,0.05);
+border-radius: 12px;
+padding: 4px;
+margin-bottom: 28px;
+}
+.auth-tab {
+flex: 1;
+padding: 9px;
+text-align: center;
+font-size: 0.88rem;
+font-weight: 600;
+color: var(–muted);
+cursor: pointer;
+border-radius: 9px;
+transition: all 0.2s;
+border: none;
+background: transparent;
+font-family: var(–font-body);
+}
+.auth-tab.active {
+background: var(–bright);
+color: #fff;
+box-shadow: 0 4px 14px rgba(124,77,255,0.4);
+}
+
+.auth-form { display: flex; flex-direction: column; gap: 14px; }
+
+.field-label {
+font-size: 0.78rem;
+font-weight: 600;
+color: var(–muted);
+margin-bottom: 6px;
+letter-spacing: 0.3px;
+}
+.field-input {
+width: 100%;
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.1);
+border-radius: 12px;
+padding: 13px 16px;
+color: var(–text);
+font-size: 0.95rem;
+font-family: var(–font-body);
+outline: none;
+transition: border-color 0.2s;
+}
+.field-input:focus { border-color: var(–bright); background: rgba(124,77,255,0.08); }
+.field-input::placeholder { color: rgba(255,255,255,0.25); }
+
+.btn-main {
+background: var(–bright);
+color: #fff;
+border: none;
+border-radius: 12px;
+padding: 14px;
+font-size: 1rem;
+font-weight: 600;
+font-family: var(–font-body);
+cursor: pointer;
+transition: all 0.25s;
+box-shadow: 0 6px 20px rgba(124,77,255,0.35);
+margin-top: 4px;
+}
+.btn-main:hover { background: #9C6FFF; transform: translateY(-1px); box-shadow: 0 10px 28px rgba(124,77,255,0.45); }
+
+.auth-divider {
+display: flex;
+align-items: center;
+gap: 12px;
+color: var(–muted);
+font-size: 0.78rem;
+margin: 4px 0;
+}
+.auth-divider::before, .auth-divider::after {
+content: ‘’;
+flex: 1;
+height: 1px;
+background: rgba(255,255,255,0.08);
+}
+
+.btn-google {
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.12);
+border-radius: 12px;
+padding: 13px;
+color: var(–text);
+font-size: 0.92rem;
+font-weight: 500;
+font-family: var(–font-body);
+cursor: pointer;
+transition: all 0.2s;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+width: 100%;
+}
+.btn-google:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+.btn-google svg { width: 18px; height: 18px; }
+
+/* ════════════════════════════════
+WELCOME SCREEN
+════════════════════════════════ */
+#welcomeScreen {
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 40px 24px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+
+.welcome-bg {
+position: fixed;
+inset: 0;
+background: radial-gradient(ellipse at 30% 20%, rgba(124,77,255,0.2) 0%, transparent 60%),
+radial-gradient(ellipse at 70% 80%, rgba(255,107,53,0.1) 0%, transparent 50%);
+z-index: 0;
+}
+
+.welcome-content {
+position: relative;
+z-index: 1;
+max-width: 560px;
+animation: slideUp 0.6s ease both;
+}
+
+.welcome-emoji {
+font-size: 4rem;
+display: block;
+margin-bottom: 24px;
+animation: bounceIn 0.8s ease both;
+}
+
+@keyframes bounceIn {
+0% { transform: scale(0); opacity: 0; }
+60% { transform: scale(1.2); opacity: 1; }
+100% { transform: scale(1); }
+}
+
+.welcome-title {
+font-family: var(–font-head);
+font-size: clamp(2rem, 5vw, 3rem);
+font-weight: 800;
+letter-spacing: -1px;
+line-height: 1.1;
+margin-bottom: 16px;
+}
+.welcome-title .name { color: var(–bright); }
+
+.welcome-sub {
+font-size: 1.05rem;
+color: var(–muted);
+line-height: 1.7;
+margin-bottom: 36px;
+font-weight: 300;
+}
+
+.welcome-cards {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 12px;
+margin-bottom: 36px;
+}
+.welcome-card {
+background: rgba(124,77,255,0.1);
+border: 1px solid var(–border);
+border-radius: 16px;
+padding: 18px 12px;
+text-align: center;
+}
+.welcome-card-icon { font-size: 1.6rem; display: block; margin-bottom: 8px; }
+.welcome-card-text { font-size: 0.78rem; color: var(–muted); line-height: 1.4; }
+.welcome-card-text strong { color: var(–text); display: block; font-size: 0.85rem; margin-bottom: 2px; }
+
+.btn-start {
+background: var(–bright);
+color: #fff;
+border: none;
+border-radius: 100px;
+padding: 16px 44px;
+font-size: 1.05rem;
+font-weight: 600;
+font-family: var(–font-body);
+cursor: pointer;
+transition: all 0.25s;
+box-shadow: 0 8px 28px rgba(124,77,255,0.4);
+display: inline-flex;
+align-items: center;
+gap: 10px;
+}
+.btn-start:hover { background: #9C6FFF; transform: translateY(-2px); box-shadow: 0 14px 36px rgba(124,77,255,0.5); }
+
+/* ════════════════════════════════
+DASHBOARD
+════════════════════════════════ */
+#dashScreen {
+flex-direction: row;
+}
+
+/* SIDEBAR */
+.sidebar {
+width: 260px;
+min-height: 100vh;
+background: var(–surface);
+border-right: 1px solid var(–border);
+display: flex;
+flex-direction: column;
+padding: 28px 20px;
+position: fixed;
+top: 0; left: 0; bottom: 0;
+z-index: 50;
+transition: transform 0.3s;
+}
+
+.sidebar-logo {
+font-family: var(–font-head);
+font-size: 1.3rem;
+font-weight: 800;
+color: var(–text);
+letter-spacing: -0.5px;
+margin-bottom: 36px;
+padding: 0 8px;
+}
+.sidebar-logo span { color: var(–bright); }
+
+.sidebar-section {
+font-size: 0.68rem;
+font-weight: 700;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+color: rgba(255,255,255,0.25);
+padding: 0 8px;
+margin-bottom: 8px;
+margin-top: 20px;
+}
+.sidebar-section:first-of-type { margin-top: 0; }
+
+.nav-item {
+display: flex;
+align-items: center;
+gap: 12px;
+padding: 11px 12px;
+border-radius: 12px;
+color: var(–muted);
+font-size: 0.9rem;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.2s;
+border: none;
+background: transparent;
+width: 100%;
+text-align: left;
+font-family: var(–font-body);
+margin-bottom: 2px;
+}
+.nav-item:hover { background: rgba(124,77,255,0.1); color: var(–text); }
+.nav-item.active { background: rgba(124,77,255,0.18); color: var(–text); }
+.nav-item.active .nav-icon { color: var(–bright); }
+.nav-icon { font-size: 1.1rem; width: 22px; text-align: center; }
+
+.sidebar-user {
+margin-top: auto;
+padding: 14px 12px;
+background: rgba(255,255,255,0.04);
+border: 1px solid var(–border);
+border-radius: 14px;
+display: flex;
+align-items: center;
+gap: 12px;
+cursor: pointer;
+}
+.user-av {
+width: 36px; height: 36px;
+border-radius: 50%;
+background: var(–bright);
+display: flex; align-items: center; justify-content: center;
+font-size: 0.85rem;
+font-weight: 700;
+font-family: var(–font-head);
+color: #fff;
+flex-shrink: 0;
+}
+.user-name { font-size: 0.85rem; font-weight: 600; color: var(–text); }
+.user-plan { font-size: 0.72rem; color: var(–muted); margin-top: 1px; }
+.user-arrow { margin-left: auto; color: var(–muted); font-size: 0.7rem; }
+
+/* MAIN CONTENT */
+.main-content {
+margin-left: 260px;
+flex: 1;
+padding: 36px 40px;
+min-height: 100vh;
+}
+
+/* TOP BAR */
+.topbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 36px;
+}
+.topbar-title {
+font-family: var(–font-head);
+font-size: 1.6rem;
+font-weight: 800;
+letter-spacing: -0.5px;
+}
+.topbar-actions { display: flex; gap: 10px; align-items: center; }
+
+.search-bar {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 12px;
+padding: 10px 16px;
+color: var(–text);
+font-size: 0.88rem;
+font-family: var(–font-body);
+outline: none;
+width: 220px;
+transition: border-color 0.2s;
+}
+.search-bar:focus { border-color: var(–bright); }
+.search-bar::placeholder { color: var(–muted); }
+
+.notif-btn {
+width: 40px; height: 40px;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 12px;
+display: flex; align-items: center; justify-content: center;
+cursor: pointer;
+font-size: 1rem;
+transition: all 0.2s;
+color: var(–muted);
+}
+.notif-btn:hover { border-color: var(–bright); color: var(–text); }
+
+/* TABS */
+.dash-tabs {
+display: flex;
+gap: 4px;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 14px;
+padding: 4px;
+margin-bottom: 32px;
+width: fit-content;
+}
+.dash-tab {
+padding: 9px 20px;
+border-radius: 10px;
+font-size: 0.88rem;
+font-weight: 600;
+color: var(–muted);
+cursor: pointer;
+transition: all 0.2s;
+border: none;
+background: transparent;
+font-family: var(–font-body);
+}
+.dash-tab.active { background: var(–bright); color: #fff; box-shadow: 0 4px 12px rgba(124,77,255,0.35); }
+
+/* STATS ROW */
+.stats-row {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 16px;
+margin-bottom: 32px;
+}
+.stat-card {
+background: var(–card);
+border: 1px solid var(–border);
+border-radius: 18px;
+padding: 22px;
+transition: all 0.3s;
+}
+.stat-card:hover { border-color: rgba(124,77,255,0.35); transform: translateY(-2px); }
+.stat-card-icon {
+width: 40px; height: 40px;
+border-radius: 10px;
+display: flex; align-items: center; justify-content: center;
+font-size: 1.1rem;
+margin-bottom: 14px;
+}
+.stat-card-num {
+font-family: var(–font-head);
+font-size: 1.8rem;
+font-weight: 800;
+letter-spacing: -1px;
+line-height: 1;
+margin-bottom: 4px;
+}
+.stat-card-label { font-size: 0.78rem; color: var(–muted); }
+.stat-card-trend { font-size: 0.72rem; margin-top: 8px; display: flex; align-items: center; gap: 4px; }
+.trend-up { color: var(–green); }
+
+/* PROGRESS BAR */
+.progress-bar {
+height: 5px;
+background: rgba(255,255,255,0.08);
+border-radius: 100px;
+overflow: hidden;
+margin-top: 10px;
+}
+.progress-fill {
+height: 100%;
+border-radius: 100px;
+background: linear-gradient(90deg, var(–bright), var(–light));
+transition: width 1s ease;
+}
+
+/* SECTION HEADER */
+.section-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 20px;
+}
+.section-title {
+font-family: var(–font-head);
+font-size: 1.15rem;
+font-weight: 700;
+letter-spacing: -0.3px;
+}
+.section-link {
+font-size: 0.82rem;
+color: var(–bright);
+cursor: pointer;
+font-weight: 500;
+transition: color 0.2s;
+}
+.section-link:hover { color: var(–light); }
+
+/* COURSES GRID */
+.courses-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 18px;
+margin-bottom: 36px;
+}
+
+.course-card {
+background: var(–card);
+border: 1px solid var(–border);
+border-radius: 20px;
+overflow: hidden;
+transition: all 0.3s;
+cursor: pointer;
+}
+.course-card:hover { border-color: rgba(124,77,255,0.4); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(45,27,105,0.3); }
+
+.course-thumb {
+height: 120px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 2.5rem;
+position: relative;
+}
+.ct1 { background: linear-gradient(135deg, #2D1B69, #5B3BB5); }
+.ct2 { background: linear-gradient(135deg, #7C2D12, #C2410C); }
+.ct3 { background: linear-gradient(135deg, #14532D, #166534); }
+.ct4 { background: linear-gradient(135deg, #1E3A5F, #1D4ED8); }
+.ct5 { background: linear-gradient(135deg, #713F12, #A16207); }
+.ct6 { background: linear-gradient(135deg, #831843, #BE185D); }
+
+.course-badge {
+position: absolute;
+top: 10px; right: 10px;
+background: rgba(0,0,0,0.4);
+backdrop-filter: blur(6px);
+padding: 3px 10px;
+border-radius: 100px;
+font-size: 0.65rem;
+font-weight: 600;
+color: rgba(255,255,255,0.85);
+}
+.course-badge.free { background: rgba(34,197,94,0.25); color: #4ADE80; }
+.course-badge.pro { background: rgba(124,77,255,0.35); color: #B39DFF; }
+
+.course-body { padding: 18px; }
+.course-title {
+font-family: var(–font-head);
+font-size: 0.92rem;
+font-weight: 700;
+color: var(–text);
+margin-bottom: 6px;
+line-height: 1.3;
+}
+.course-desc {
+font-size: 0.78rem;
+color: var(–muted);
+line-height: 1.5;
+margin-bottom: 14px;
+}
+.course-meta {
+display: flex;
+gap: 12px;
+font-size: 0.72rem;
+color: rgba(255,255,255,0.35);
+margin-bottom: 12px;
+}
+.course-progress-wrap { }
+.course-progress-label {
+display: flex;
+justify-content: space-between;
+font-size: 0.72rem;
+color: var(–muted);
+margin-bottom: 6px;
+}
+.btn-course {
+width: 100%;
+padding: 10px;
+border-radius: 10px;
+font-size: 0.82rem;
+font-weight: 600;
+font-family: var(–font-body);
+cursor: pointer;
+border: none;
+transition: all 0.2s;
+margin-top: 12px;
+}
+.btn-course.start { background: var(–bright); color: #fff; }
+.btn-course.start:hover { background: #9C6FFF; }
+.btn-course.continue { background: rgba(124,77,255,0.15); color: var(–light); border: 1px solid var(–border); }
+.btn-course.continue:hover { background: rgba(124,77,255,0.25); }
+
+/* AI TUTOR PANEL */
+.ai-panel {
+background: var(–card);
+border: 1px solid var(–border);
+border-radius: 20px;
+overflow: hidden;
+margin-bottom: 36px;
+}
+.ai-panel-header {
+display: flex;
+align-items: center;
+gap: 14px;
+padding: 20px 24px;
+border-bottom: 1px solid var(–border);
+background: rgba(124,77,255,0.06);
+}
+.ai-av {
+width: 40px; height: 40px;
+background: var(–bright);
+border-radius: 12px;
+display: flex; align-items: center; justify-content: center;
+font-size: 1.1rem;
+flex-shrink: 0;
+}
+.ai-name { font-family: var(–font-head); font-size: 0.95rem; font-weight: 700; }
+.ai-status { font-size: 0.72rem; color: var(–green); display: flex; align-items: center; gap: 5px; margin-top: 2px; }
+.ai-status::before { content: ‘’; width: 6px; height: 6px; background: var(–green); border-radius: 50%; display: inline-block; }
+.ai-badge { margin-left: auto; background: rgba(124,77,255,0.2); border: 1px solid var(–border); border-radius: 100px; padding: 4px 12px; font-size: 0.7rem; color: var(–light); font-weight: 600; }
+
+.ai-chat { padding: 20px 24px; max-height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; }
+.chat-msg { display: flex; gap: 10px; }
+.chat-msg.user { flex-direction: row-reverse; }
+.chat-bubble {
+max-width: 75%;
+padding: 11px 15px;
+border-radius: 16px 16px 16px 3px;
+font-size: 0.84rem;
+line-height: 1.6;
+color: var(–text);
+background: rgba(255,255,255,0.06);
+}
+.chat-msg.user .chat-bubble {
+background: var(–bright);
+border-radius: 16px 16px 3px 16px;
+}
+.chat-mini-av {
+width: 28px; height: 28px;
+border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-size: 0.75rem;
+flex-shrink: 0;
+margin-top: 2px;
+}
+.chat-mini-av.ai { background: var(–bright); }
+.chat-mini-av.user { background: rgba(255,255,255,0.1); }
+
+.ai-input-row {
+display: flex;
+gap: 10px;
+padding: 16px 24px;
+border-top: 1px solid var(–border);
+}
+.ai-input {
+flex: 1;
+background: rgba(255,255,255,0.05);
+border: 1px solid var(–border);
+border-radius: 12px;
+padding: 11px 16px;
+color: var(–text);
+font-size: 0.88rem;
+font-family: var(–font-body);
+outline: none;
+transition: border-color 0.2s;
+}
+.ai-input:focus { border-color: var(–bright); }
+.ai-input::placeholder { color: var(–muted); }
+.ai-send {
+background: var(–bright);
+border: none;
+border-radius: 12px;
+padding: 11px 18px;
+color: #fff;
+font-size: 1rem;
+cursor: pointer;
+transition: all 0.2s;
+}
+.ai-send:hover { background: #9C6FFF; }
+
+/* PROFILE PANEL */
+.profile-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 18px;
+}
+.profile-card {
+background: var(–card);
+border: 1px solid var(–border);
+border-radius: 20px;
+padding: 24px;
+}
+.profile-card.full { grid-column: 1 / -1; }
+.profile-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(–muted); margin-bottom: 16px; }
+.plan-badge {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+background: rgba(124,77,255,0.15);
+border: 1px solid var(–border);
+border-radius: 100px;
+padding: 6px 16px;
+font-size: 0.82rem;
+font-weight: 600;
+color: var(–light);
+margin-bottom: 16px;
+}
+.plan-badge.free { background: rgba(255,255,255,0.05); color: var(–muted); }
+
+.upgrade-btn {
+width: 100%;
+padding: 13px;
+background: linear-gradient(135deg, var(–bright), var(–mid));
+border: none;
+border-radius: 12px;
+color: #fff;
+font-size: 0.92rem;
+font-weight: 600;
+font-family: var(–font-body);
+cursor: pointer;
+transition: all 0.25s;
+box-shadow: 0 6px 20px rgba(124,77,255,0.3);
+}
+.upgrade-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(124,77,255,0.45); }
+
+/* TABS CONTENT */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* MOBILE MENU BTN */
+.menu-btn {
+display: none;
+position: fixed;
+top: 16px; left: 16px;
+z-index: 200;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 10px;
+width: 40px; height: 40px;
+align-items: center; justify-content: center;
+cursor: pointer;
+font-size: 1.1rem;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(124,77,255,0.3); border-radius: 2px; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+.sidebar { transform: translateX(-100%); }
+.sidebar.open { transform: translateX(0); }
+.main-content { margin-left: 0; padding: 72px 20px 32px; }
+.menu-btn { display: flex; }
+.stats-row { grid-template-columns: repeat(2, 1fr); }
+.courses-grid { grid-template-columns: 1fr; }
+.profile-grid { grid-template-columns: 1fr; }
+.welcome-cards { grid-template-columns: 1fr; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- ════ AUTH SCREEN ════ -->
+
+<div id="authScreen" class="screen active">
+  <div class="auth-bg">
+    <div class="auth-orb orb-a"></div>
+    <div class="auth-orb orb-b"></div>
+    <div class="auth-orb orb-c"></div>
+  </div>
+
+  <div class="auth-box">
+    <div class="auth-logo">Hazlo<span>Real</span></div>
+
+```
+<div class="auth-tabs">
+  <button class="auth-tab active" onclick="switchTab('login')">Entrar</button>
+  <button class="auth-tab" onclick="switchTab('register')">Registrarse</button>
+</div>
+
+<!-- LOGIN -->
+<div id="loginForm" class="auth-form">
+  <div>
+    <div class="field-label">Correo electrónico</div>
+    <input class="field-input" type="email" placeholder="tu@email.com" id="loginEmail"/>
+  </div>
+  <div>
+    <div class="field-label">Contraseña</div>
+    <input class="field-input" type="password" placeholder="••••••••" id="loginPass"/>
+  </div>
+  <button class="btn-main" onclick="doLogin()">Entrar a HazloReal →</button>
+  <div class="auth-divider">o</div>
+  <button class="btn-google" onclick="doLogin()">
+    <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+    Continuar con Google
+  </button>
+  <p style="text-align:center;font-size:0.75rem;color:var(--muted);margin-top:4px;">
+    ¿No tienes cuenta? <span style="color:var(--bright);cursor:pointer;" onclick="switchTab('register')">Regístrate gratis</span>
+  </p>
+</div>
+
+<!-- REGISTER -->
+<div id="registerForm" class="auth-form" style="display:none;">
+  <div>
+    <div class="field-label">Tu nombre</div>
+    <input class="field-input" type="text" placeholder="María García" id="regName"/>
+  </div>
+  <div>
+    <div class="field-label">Correo electrónico</div>
+    <input class="field-input" type="email" placeholder="tu@email.com" id="regEmail"/>
+  </div>
+  <div>
+    <div class="field-label">Contraseña</div>
+    <input class="field-input" type="password" placeholder="Mínimo 8 caracteres" id="regPass"/>
+  </div>
+  <button class="btn-main" onclick="doRegister()">Crear cuenta gratis →</button>
+  <div class="auth-divider">o</div>
+  <button class="btn-google" onclick="doRegister()">
+    <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+    Continuar con Google
+  </button>
+  <p style="text-align:center;font-size:0.75rem;color:var(--muted);margin-top:4px;">
+    ¿Ya tienes cuenta? <span style="color:var(--bright);cursor:pointer;" onclick="switchTab('login')">Entra aquí</span>
+  </p>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- ════ WELCOME SCREEN ════ -->
+
+<div id="welcomeScreen" class="screen">
+  <div class="welcome-bg"></div>
+  <div class="welcome-content">
+    <span class="welcome-emoji">👋</span>
+    <h1 class="welcome-title">Bienvenida,<br><span class="name" id="welcomeName">Claudia</span></h1>
+    <p class="welcome-sub">
+      Ya eres parte de HazloReal. Aquí aprenderás lo que pasa<br>de verdad en las empresas — sin teoría vacía.
+    </p>
+    <div class="welcome-cards">
+      <div class="welcome-card">
+        <span class="welcome-card-icon">🎓</span>
+        <div class="welcome-card-text">
+          <strong>6 Cursos</strong>
+          listos para empezar
+        </div>
+      </div>
+      <div class="welcome-card">
+        <span class="welcome-card-icon">🤖</span>
+        <div class="welcome-card-text">
+          <strong>Tutor IA</strong>
+          disponible 24h
+        </div>
+      </div>
+      <div class="welcome-card">
+        <span class="welcome-card-icon">📁</span>
+        <div class="welcome-card-text">
+          <strong>Entregables</strong>
+          reales incluidos
+        </div>
+      </div>
+    </div>
+    <button class="btn-start" onclick="showDash()">
+      Ir a mis cursos →
+    </button>
+  </div>
+</div>
+
+<!-- ════ DASHBOARD ════ -->
+
+<div id="dashScreen" class="screen">
+
+  <!-- Mobile menu btn -->
+
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">Hazlo<span>Real</span></div>
+
+```
+<div class="sidebar-section">Principal</div>
+<button class="nav-item active" onclick="setTab('cursos', this)">
+  <span class="nav-icon">📚</span> Mis cursos
+</button>
+<button class="nav-item" onclick="setTab('progreso', this)">
+  <span class="nav-icon">📈</span> Mi progreso
+</button>
+<button class="nav-item" onclick="setTab('tutor', this)">
+  <span class="nav-icon">🤖</span> Tutor IA
+</button>
+
+<div class="sidebar-section">Cuenta</div>
+<button class="nav-item" onclick="setTab('perfil', this)">
+  <span class="nav-icon">👤</span> Mi perfil
+</button>
+<button class="nav-item" onclick="setTab('suscripcion', this)">
+  <span class="nav-icon">⚡</span> Suscripción
+</button>
+
+<div class="sidebar-user">
+  <div class="user-av" id="sidebarAv">C</div>
+  <div>
+    <div class="user-name" id="sidebarName">Claudia</div>
+    <div class="user-plan">Plan Gratuito</div>
+  </div>
+  <div class="user-arrow">▸</div>
+</div>
+```
+
+  </aside>
+
+  <!-- MAIN -->
+
+  <main class="main-content">
+
+```
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-title" id="topbarTitle">Mis cursos</div>
+  <div class="topbar-actions">
+    <input class="search-bar" placeholder="🔍  Buscar curso..." />
+    <div class="notif-btn">🔔</div>
+  </div>
+</div>
+
+<!-- ── TAB: CURSOS ── -->
+<div id="tab-cursos" class="tab-content active">
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:rgba(124,77,255,0.15);">📚</div>
+      <div class="stat-card-num">6</div>
+      <div class="stat-card-label">Cursos disponibles</div>
+      <div class="stat-card-trend trend-up">↑ 2 nuevos este mes</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:rgba(34,197,94,0.12);">✅</div>
+      <div class="stat-card-num">0</div>
+      <div class="stat-card-label">Cursos completados</div>
+      <div class="stat-card-trend" style="color:var(--muted);">Empieza hoy</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:rgba(255,107,53,0.12);">🤖</div>
+      <div class="stat-card-num">5</div>
+      <div class="stat-card-label">Preguntas al Tutor IA hoy</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:rgba(179,157,255,0.12);">⏱</div>
+      <div class="stat-card-num">0h</div>
+      <div class="stat-card-label">Tiempo de aprendizaje</div>
+      <div class="stat-card-trend" style="color:var(--muted);">Esta semana</div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-title">Todos los cursos</div>
+    <div class="section-link">Ver todos →</div>
+  </div>
+
+  <div class="courses-grid">
+    <div class="course-card">
+      <div class="course-thumb ct1"><span>💼</span><span class="course-badge free">Gratis</span></div>
+      <div class="course-body">
+        <div class="course-title">Tu primera semana como administrativo</div>
+        <div class="course-desc">Gestión de correos, facturas, Excel básico y clientes difíciles.</div>
+        <div class="course-meta"><span>⏱ 6h</span><span>📁 8 entregas</span><span>12 lecciones</span></div>
+        <div class="course-progress-wrap">
+          <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+        <button class="btn-course start">Empezar curso →</button>
+      </div>
+    </div>
+    <div class="course-card">
+      <div class="course-thumb ct2"><span>🤖</span><span class="course-badge free">Gratis</span></div>
+      <div class="course-body">
+        <div class="course-title">IA en tu trabajo desde mañana</div>
+        <div class="course-desc">ChatGPT, automatizaciones y prompts reales. Sin tecnicismos.</div>
+        <div class="course-meta"><span>⏱ 4h</span><span>📁 5 entregas</span><span>8 lecciones</span></div>
+        <div class="course-progress-wrap">
+          <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+        <button class="btn-course start">Empezar curso →</button>
+      </div>
+    </div>
+    <div class="course-card">
+      <div class="course-thumb ct3"><span>🌱</span><span class="course-badge pro">Premium</span></div>
+      <div class="course-body">
+        <div class="course-title">Gestión de negocio sin morir en el intento</div>
+        <div class="course-desc">Finanzas básicas, equipo y herramientas digitales reales.</div>
+        <div class="course-meta"><span>⏱ 8h</span><span>📁 10 entregas</span><span>16 lecciones</span></div>
+        <div class="course-progress-wrap">
+          <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+        <button class="btn-course start" onclick="showUpgrade()">🔒 Desbloquear</button>
+      </div>
+    </div>
+    <div class="course-card">
+      <div class="course-thumb ct4"><span>🎓</span><span class="course-badge free">Gratis</span></div>
+      <div class="course-body">
+        <div class="course-title">De candidato a contratado</div>
+        <div class="course-desc">CV real, entrevistas y LinkedIn. Lo que preguntan de verdad.</div>
+        <div class="course-meta"><span>⏱ 5h</span><span>📁 6 entregas</span><span>10 lecciones</span></div>
+        <div class="course-progress-wrap">
+          <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+        <button class="btn-course start">Empezar curso →</button>
+      </div>
+    </div>
+    <div class="course-card">
+      <div class="course-thumb ct5"><span>👔</span><span class="course-badge pro">Premium</span></div>
+      <div class="course-body">
+        <div class="course-title">El gerente que nadie te enseñó a ser</div>
+        <div class="course-desc">Reuniones, feedback, conflictos y decisiones difíciles.</div>
+        <div class="course-meta"><span>⏱ 7h</span><span>📁 9 entregas</span><span>14 lecciones</span></div>
+        <div class="course-progress-wrap">
+          <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+        <button class="btn-course start" onclick="showUpgrade()">🔒 Desbloquear</button>
+      </div>
+    </div>
+    <div class="course-card">
+      <div class="course-thumb ct6"><span>📊</span><span class="course-badge free">Gratis</span></div>
+      <div class="course-body">
+        <div class="course-title">Excel para tu trabajo real</div>
+        <div class="course-desc">Las hojas que usarás en tu empresa, con datos reales.</div>
+        <div class="course-meta"><span>⏱ 5h</span><span>📁 7 entregas</span><span>10 lecciones</span></div>
+        <div class="course-progress-wrap">
+          <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+        <button class="btn-course start">Empezar curso →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TAB: PROGRESO ── -->
+<div id="tab-progreso" class="tab-content">
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:rgba(124,77,255,0.15);">🔥</div>
+      <div class="stat-card-num">0</div>
+      <div class="stat-card-label">Días seguidos</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:rgba(34,197,94,0.12);">⭐</div>
+      <div class="stat-card-num">0</div>
+      <div class="stat-card-label">Lecciones completadas</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:rgba(255,107,53,0.12);">📁</div>
+      <div class="stat-card-num">0</div>
+      <div class="stat-card-label">Entregables completados</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:rgba(179,157,255,0.12);">🏆</div>
+      <div class="stat-card-num">0</div>
+      <div class="stat-card-label">Certificados obtenidos</div>
+    </div>
+  </div>
+  <div class="ai-panel">
+    <div style="padding:60px;text-align:center;">
+      <div style="font-size:3rem;margin-bottom:16px;">🚀</div>
+      <div style="font-family:var(--font-head);font-size:1.2rem;font-weight:700;margin-bottom:8px;">Empieza tu primer curso</div>
+      <div style="color:var(--muted);font-size:0.88rem;margin-bottom:24px;">Tu progreso aparecerá aquí cuando comiences a aprender.</div>
+      <button class="btn-main" style="max-width:200px;margin:0 auto;" onclick="setTab('cursos', document.querySelector('.nav-item'))">Ver cursos →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── TAB: TUTOR IA ── -->
+<div id="tab-tutor" class="tab-content">
+  <div class="ai-panel">
+    <div class="ai-panel-header">
+      <div class="ai-av">🤖</div>
+      <div>
+        <div class="ai-name">Tutor IA — HazloReal</div>
+        <div class="ai-status">Disponible ahora</div>
+      </div>
+      <div class="ai-badge">✦ IA Avanzada</div>
+    </div>
+    <div class="ai-chat" id="aiChat">
+      <div class="chat-msg">
+        <div class="chat-mini-av ai">🤖</div>
+        <div class="chat-bubble">¡Hola! Soy tu tutor de HazloReal. Puedo ayudarte con cualquier duda sobre los cursos, explicarte conceptos de otra forma o darte ejemplos adaptados a tu situación. ¿Con qué te puedo ayudar hoy?</div>
+      </div>
+    </div>
+    <div class="ai-input-row">
+      <input class="ai-input" id="aiInput" placeholder="Escribe tu pregunta aquí..." onkeydown="if(event.key==='Enter') sendAI()"/>
+      <button class="ai-send" onclick="sendAI()">➤</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── TAB: PERFIL ── -->
+<div id="tab-perfil" class="tab-content">
+  <div class="profile-grid">
+    <div class="profile-card full">
+      <div class="profile-label">Mi cuenta</div>
+      <div style="display:flex;align-items:center;gap:18px;margin-bottom:20px;">
+        <div style="width:60px;height:60px;border-radius:50%;background:var(--bright);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:1.4rem;font-weight:800;" id="profileAv">C</div>
+        <div>
+          <div style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;" id="profileName">Claudia</div>
+          <div style="color:var(--muted);font-size:0.82rem;" id="profileEmail">usuario@email.com</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div>
+          <div class="field-label">Nombre</div>
+          <input class="field-input" id="profileNameInput" placeholder="Tu nombre"/>
+        </div>
+        <div>
+          <div class="field-label">Email</div>
+          <input class="field-input" id="profileEmailInput" type="email" placeholder="tu@email.com"/>
+        </div>
+      </div>
+      <button class="btn-main" style="max-width:200px;margin-top:16px;">Guardar cambios</button>
+    </div>
+    <div class="profile-card">
+      <div class="profile-label">Seguridad</div>
+      <div class="field-label">Nueva contraseña</div>
+      <input class="field-input" type="password" placeholder="••••••••" style="margin-bottom:12px;"/>
+      <button class="btn-main">Cambiar contraseña</button>
+    </div>
+    <div class="profile-card">
+      <div class="profile-label">Sesión</div>
+      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:16px;line-height:1.6;">¿Quieres cerrar sesión en este dispositivo?</p>
+      <button onclick="logout()" style="width:100%;padding:13px;background:rgba(255,80,80,0.1);border:1px solid rgba(255,80,80,0.2);border-radius:12px;color:#FF6B6B;font-size:0.9rem;font-weight:600;font-family:var(--font-body);cursor:pointer;">Cerrar sesión</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── TAB: SUSCRIPCIÓN ── -->
+<div id="tab-suscripcion" class="tab-content">
+  <div class="profile-grid">
+    <div class="profile-card">
+      <div class="profile-label">Plan actual</div>
+      <div class="plan-badge free">Plan Gratuito</div>
+      <p style="color:var(--muted);font-size:0.84rem;line-height:1.6;margin-bottom:16px;">Tienes acceso a los primeros módulos de cada curso y 5 preguntas al Tutor IA por día.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
+        <li style="font-size:0.82rem;color:var(--muted);display:flex;gap:8px;"><span style="color:var(--green);">✓</span> Primeros módulos de cada curso</li>
+        <li style="font-size:0.82rem;color:var(--muted);display:flex;gap:8px;"><span style="color:var(--green);">✓</span> Tutor IA (5 preguntas/día)</li>
+        <li style="font-size:0.82rem;color:rgba(255,255,255,0.2);display:flex;gap:8px;"><span>✗</span> Cursos completos</li>
+        <li style="font-size:0.82rem;color:rgba(255,255,255,0.2);display:flex;gap:8px;"><span>✗</span> Entregables descargables</li>
+        <li style="font-size:0.82rem;color:rgba(255,255,255,0.2);display:flex;gap:8px;"><span>✗</span> Certificados con valor real</li>
+      </ul>
+    </div>
+    <div class="profile-card" style="border-color:rgba(124,77,255,0.4);background:linear-gradient(145deg,rgba(45,27,105,0.5),rgba(91,59,181,0.2));">
+      <div class="profile-label">Plan Premium</div>
+      <div style="font-family:var(--font-head);font-size:2.5rem;font-weight:800;letter-spacing:-1px;margin-bottom:4px;">12€<span style="font-size:1rem;font-weight:400;color:var(--muted);">/mes</span></div>
+      <p style="color:var(--muted);font-size:0.8rem;margin-bottom:16px;">Cancela cuando quieras. Sin permanencia.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
+        <li style="font-size:0.82rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--bright);">✓</span> Todos los cursos completos</li>
+        <li style="font-size:0.82rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--bright);">✓</span> Tutor IA ilimitado</li>
+        <li style="font-size:0.82rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--bright);">✓</span> Archivos y entregables</li>
+        <li style="font-size:0.82rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--bright);">✓</span> Certificados con valor real</li>
+        <li style="font-size:0.82rem;color:var(--text);display:flex;gap:8px;"><span style="color:var(--bright);">✓</span> Cursos nuevos cada mes</li>
+      </ul>
+      <button class="upgrade-btn">⚡ Activar Premium ahora</button>
+      <p style="text-align:center;font-size:0.72rem;color:var(--muted);margin-top:10px;">7 días gratis · Sin tarjeta al inicio</p>
+    </div>
+  </div>
+</div>
+```
+
+  </main>
+</div>
+
+<script>
+  // ── STATE ──
+  let currentUser = { name: 'Usuario', email: '' };
+  let isNewUser = false;
+
+  // ── AUTH TABS ──
+  function switchTab(tab) {
+    document.querySelectorAll('.auth-tab').forEach((t,i) => {
+      t.classList.toggle('active', (tab==='login' && i===0) || (tab==='register' && i===1));
+    });
+    document.getElementById('loginForm').style.display = tab === 'login' ? 'flex' : 'none';
+    document.getElementById('registerForm').style.display = tab === 'register' ? 'flex' : 'none';
+  }
+
+  // ── LOGIN ──
+  function doLogin() {
+    const email = document.getElementById('loginEmail').value.trim() || 'usuario@hazloreal.com';
+    const name = email.split('@')[0];
+    currentUser = { name: capitalize(name), email };
+    isNewUser = false;
+    showWelcome();
+  }
+
+  // ── REGISTER ──
+  function doRegister() {
+    const name = document.getElementById('regName').value.trim() || 'Usuario';
+    const email = document.getElementById('regEmail').value.trim() || 'usuario@hazloreal.com';
+    currentUser = { name: capitalize(name), email };
+    isNewUser = true;
+    showWelcome();
+  }
+
+  // ── WELCOME ──
+  function showWelcome() {
+    document.getElementById('welcomeName').textContent = currentUser.name.split(' ')[0];
+    show('welcomeScreen');
+  }
+
+  // ── DASHBOARD ──
+  function showDash() {
+    const first = currentUser.name.split(' ')[0];
+    const initial = first[0].toUpperCase();
+    document.getElementById('sidebarAv').textContent = initial;
+    document.getElementById('sidebarName').textContent = first;
+    document.getElementById('profileAv').textContent = initial;
+    document.getElementById('profileName').textContent = currentUser.name;
+    document.getElementById('profileEmail').textContent = currentUser.email;
+    document.getElementById('profileNameInput').value = currentUser.name;
+    document.getElementById('profileEmailInput').value = currentUser.email;
+    show('dashScreen');
+  }
+
+  // ── SHOW UPGRADE ──
+  function showUpgrade() {
+    setTab('suscripcion', null);
+    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+    document.querySelectorAll('.nav-item')[4].classList.add('active');
+  }
+
+  // ── LOGOUT ──
+  function logout() {
+    currentUser = { name: 'Usuario', email: '' };
+    document.getElementById('loginEmail').value = '';
+    document.getElementById('loginPass').value = '';
+    show('authScreen');
+  }
+
+  // ── TABS ──
+  function setTab(name, el) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+    if (el) el.classList.add('active');
+    const titles = { cursos: 'Mis cursos', progreso: 'Mi progreso', tutor: 'Tutor IA', perfil: 'Mi perfil', suscripcion: 'Suscripción' };
+    document.getElementById('topbarTitle').textContent = titles[name] || name;
+    if (window.innerWidth < 1024) document.getElementById('sidebar').classList.remove('open');
+  }
+
+  // ── SIDEBAR MOBILE ──
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+  }
+
+  // ── SHOW SCREEN ──
+  function show(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  // ── AI TUTOR ──
+  async function sendAI() {
+    const input = document.getElementById('aiInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+    input.value = '';
+
+    const chat = document.getElementById('aiChat');
+
+    // User bubble
+    chat.innerHTML += `
+      <div class="chat-msg user">
+        <div class="chat-mini-av user">👤</div>
+        <div class="chat-bubble">${msg}</div>
+      </div>`;
+
+    // Typing indicator
+    const typingId = 'typing-' + Date.now();
+    chat.innerHTML += `
+      <div class="chat-msg" id="${typingId}">
+        <div class="chat-mini-av ai">🤖</div>
+        <div class="chat-bubble" style="color:var(--muted);">✦ escribiendo...</div>
+      </div>`;
+    chat.scrollTop = chat.scrollHeight;
+
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: 'Eres el Tutor IA de HazloReal, una plataforma de cursos prácticos sobre el mundo laboral real en España y Latinoamérica. Ayudas a los alumnos con dudas sobre sus cursos, explicas conceptos de forma práctica y cercana, y das ejemplos reales de situaciones laborales. Responde siempre en español, de forma concisa, amigable y práctica. Máximo 3 párrafos.',
+          messages: [{ role: 'user', content: msg }]
+        })
+      });
+      const data = await res.json();
+      const reply = data.content?.[0]?.text || 'Disculpa, no pude procesar tu pregunta. Inténtalo de nuevo.';
+      document.getElementById(typingId).innerHTML = `
+        <div class="chat-mini-av ai">🤖</div>
+        <div class="chat-bubble">${reply}</div>`;
+    } catch(e) {
+      document.getElementById(typingId).innerHTML = `
+        <div class="chat-mini-av ai">🤖</div>
+        <div class="chat-bubble">Disculpa, hubo un error de conexión. Inténtalo de nuevo.</div>`;
+    }
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  // ── HELPERS ──
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
+  // Enter en AI input
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('aiInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') sendAI();
+    });
+  });
+</script>
+
+</body>
+</html>
