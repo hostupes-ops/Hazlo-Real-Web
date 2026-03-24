@@ -87,7 +87,7 @@ animation: slideUp 0.5s ease both;
 
 @keyframes slideUp {
 from { opacity: 0; transform: translateY(28px); }
-to { opacity: 1; transform: translateY(0); }
+to   { opacity: 1; transform: translateY(0); }
 }
 
 .auth-logo {
@@ -239,8 +239,8 @@ animation: bounceIn 0.8s ease both;
 }
 
 @keyframes bounceIn {
-0% { transform: scale(0); opacity: 0; }
-60% { transform: scale(1.2); opacity: 1; }
+0%   { transform: scale(0); opacity: 0; }
+60%  { transform: scale(1.2); opacity: 1; }
 100% { transform: scale(1); }
 }
 
@@ -583,7 +583,7 @@ font-weight: 600;
 color: rgba(255,255,255,0.85);
 }
 .course-badge.free { background: rgba(34,197,94,0.25); color: #4ADE80; }
-.course-badge.pro { background: rgba(124,77,255,0.35); color: #B39DFF; }
+.course-badge.pro  { background: rgba(124,77,255,0.35); color: #B39DFF; }
 
 .course-body { padding: 18px; }
 .course-title {
@@ -607,7 +607,6 @@ font-size: 0.72rem;
 color: rgba(255,255,255,0.35);
 margin-bottom: 12px;
 }
-.course-progress-wrap { }
 .course-progress-label {
 display: flex;
 justify-content: space-between;
@@ -627,7 +626,7 @@ border: none;
 transition: all 0.2s;
 margin-top: 12px;
 }
-.btn-course.start { background: var(–bright); color: #fff; }
+.btn-course.start    { background: var(–bright); color: #fff; }
 .btn-course.start:hover { background: #9C6FFF; }
 .btn-course.continue { background: rgba(124,77,255,0.15); color: var(–light); border: 1px solid var(–border); }
 .btn-course.continue:hover { background: rgba(124,77,255,0.25); }
@@ -656,10 +655,10 @@ display: flex; align-items: center; justify-content: center;
 font-size: 1.1rem;
 flex-shrink: 0;
 }
-.ai-name { font-family: var(–font-head); font-size: 0.95rem; font-weight: 700; }
+.ai-name   { font-family: var(–font-head); font-size: 0.95rem; font-weight: 700; }
 .ai-status { font-size: 0.72rem; color: var(–green); display: flex; align-items: center; gap: 5px; margin-top: 2px; }
 .ai-status::before { content: ‘’; width: 6px; height: 6px; background: var(–green); border-radius: 50%; display: inline-block; }
-.ai-badge { margin-left: auto; background: rgba(124,77,255,0.2); border: 1px solid var(–border); border-radius: 100px; padding: 4px 12px; font-size: 0.7rem; color: var(–light); font-weight: 600; }
+.ai-badge  { margin-left: auto; background: rgba(124,77,255,0.2); border: 1px solid var(–border); border-radius: 100px; padding: 4px 12px; font-size: 0.7rem; color: var(–light); font-weight: 600; }
 
 .ai-chat { padding: 20px 24px; max-height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; }
 .chat-msg { display: flex; gap: 10px; }
@@ -685,7 +684,7 @@ font-size: 0.75rem;
 flex-shrink: 0;
 margin-top: 2px;
 }
-.chat-mini-av.ai { background: var(–bright); }
+.chat-mini-av.ai   { background: var(–bright); }
 .chat-mini-av.user { background: rgba(255,255,255,0.1); }
 
 .ai-input-row {
@@ -886,37 +885,24 @@ font-size: 1.1rem;
     <div class="welcome-cards">
       <div class="welcome-card">
         <span class="welcome-card-icon">🎓</span>
-        <div class="welcome-card-text">
-          <strong>6 Cursos</strong>
-          listos para empezar
-        </div>
+        <div class="welcome-card-text"><strong>6 Cursos</strong>listos para empezar</div>
       </div>
       <div class="welcome-card">
         <span class="welcome-card-icon">🤖</span>
-        <div class="welcome-card-text">
-          <strong>Tutor IA</strong>
-          disponible 24h
-        </div>
+        <div class="welcome-card-text"><strong>Tutor IA</strong>disponible 24h</div>
       </div>
       <div class="welcome-card">
         <span class="welcome-card-icon">📁</span>
-        <div class="welcome-card-text">
-          <strong>Entregables</strong>
-          reales incluidos
-        </div>
+        <div class="welcome-card-text"><strong>Entregables</strong>reales incluidos</div>
       </div>
     </div>
-    <button class="btn-start" onclick="showDash()">
-      Ir a mis cursos →
-    </button>
+    <button class="btn-start" onclick="showDash()">Ir a mis cursos →</button>
   </div>
 </div>
 
 <!-- ════ DASHBOARD ════ -->
 
 <div id="dashScreen" class="screen">
-
-  <!-- Mobile menu btn -->
 
 <button class="menu-btn" onclick="toggleSidebar()">☰</button>
 
@@ -1012,10 +998,8 @@ font-size: 1.1rem;
         <div class="course-title">Tu primera semana como administrativo</div>
         <div class="course-desc">Gestión de correos, facturas, Excel básico y clientes difíciles.</div>
         <div class="course-meta"><span>⏱ 6h</span><span>📁 8 entregas</span><span>12 lecciones</span></div>
-        <div class="course-progress-wrap">
-          <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
-        </div>
+        <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
         <button class="btn-course start">Empezar curso →</button>
       </div>
     </div>
@@ -1025,10 +1009,8 @@ font-size: 1.1rem;
         <div class="course-title">IA en tu trabajo desde mañana</div>
         <div class="course-desc">ChatGPT, automatizaciones y prompts reales. Sin tecnicismos.</div>
         <div class="course-meta"><span>⏱ 4h</span><span>📁 5 entregas</span><span>8 lecciones</span></div>
-        <div class="course-progress-wrap">
-          <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
-        </div>
+        <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
         <button class="btn-course start">Empezar curso →</button>
       </div>
     </div>
@@ -1038,10 +1020,8 @@ font-size: 1.1rem;
         <div class="course-title">Gestión de negocio sin morir en el intento</div>
         <div class="course-desc">Finanzas básicas, equipo y herramientas digitales reales.</div>
         <div class="course-meta"><span>⏱ 8h</span><span>📁 10 entregas</span><span>16 lecciones</span></div>
-        <div class="course-progress-wrap">
-          <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
-        </div>
+        <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
         <button class="btn-course start" onclick="showUpgrade()">🔒 Desbloquear</button>
       </div>
     </div>
@@ -1051,10 +1031,8 @@ font-size: 1.1rem;
         <div class="course-title">De candidato a contratado</div>
         <div class="course-desc">CV real, entrevistas y LinkedIn. Lo que preguntan de verdad.</div>
         <div class="course-meta"><span>⏱ 5h</span><span>📁 6 entregas</span><span>10 lecciones</span></div>
-        <div class="course-progress-wrap">
-          <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
-        </div>
+        <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
         <button class="btn-course start">Empezar curso →</button>
       </div>
     </div>
@@ -1064,10 +1042,8 @@ font-size: 1.1rem;
         <div class="course-title">El gerente que nadie te enseñó a ser</div>
         <div class="course-desc">Reuniones, feedback, conflictos y decisiones difíciles.</div>
         <div class="course-meta"><span>⏱ 7h</span><span>📁 9 entregas</span><span>14 lecciones</span></div>
-        <div class="course-progress-wrap">
-          <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
-        </div>
+        <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
         <button class="btn-course start" onclick="showUpgrade()">🔒 Desbloquear</button>
       </div>
     </div>
@@ -1077,10 +1053,8 @@ font-size: 1.1rem;
         <div class="course-title">Excel para tu trabajo real</div>
         <div class="course-desc">Las hojas que usarás en tu empresa, con datos reales.</div>
         <div class="course-meta"><span>⏱ 5h</span><span>📁 7 entregas</span><span>10 lecciones</span></div>
-        <div class="course-progress-wrap">
-          <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
-        </div>
+        <div class="course-progress-label"><span>Progreso</span><span>0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
         <button class="btn-course start">Empezar curso →</button>
       </div>
     </div>
@@ -1139,7 +1113,7 @@ font-size: 1.1rem;
       </div>
     </div>
     <div class="ai-input-row">
-      <input class="ai-input" id="aiInput" placeholder="Escribe tu pregunta aquí..." onkeydown="if(event.key==='Enter') sendAI()"/>
+      <input class="ai-input" id="aiInput" placeholder="Escribe tu pregunta aquí..."/>
       <button class="ai-send" onclick="sendAI()">➤</button>
     </div>
   </div>
@@ -1222,7 +1196,6 @@ font-size: 1.1rem;
 <script>
   // ── STATE ──
   let currentUser = { name: 'Usuario', email: '' };
-  let isNewUser = false;
 
   // ── AUTH TABS ──
   function switchTab(tab) {
@@ -1238,7 +1211,6 @@ font-size: 1.1rem;
     const email = document.getElementById('loginEmail').value.trim() || 'usuario@hazloreal.com';
     const name = email.split('@')[0];
     currentUser = { name: capitalize(name), email };
-    isNewUser = false;
     showWelcome();
   }
 
@@ -1247,7 +1219,6 @@ font-size: 1.1rem;
     const name = document.getElementById('regName').value.trim() || 'Usuario';
     const email = document.getElementById('regEmail').value.trim() || 'usuario@hazloreal.com';
     currentUser = { name: capitalize(name), email };
-    isNewUser = true;
     showWelcome();
   }
 
@@ -1271,7 +1242,7 @@ font-size: 1.1rem;
     show('dashScreen');
   }
 
-  // ── SHOW UPGRADE ──
+  // ── UPGRADE ──
   function showUpgrade() {
     setTab('suscripcion', null);
     document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
@@ -1317,14 +1288,12 @@ font-size: 1.1rem;
 
     const chat = document.getElementById('aiChat');
 
-    // User bubble
     chat.innerHTML += `
       <div class="chat-msg user">
         <div class="chat-mini-av user">👤</div>
         <div class="chat-bubble">${msg}</div>
       </div>`;
 
-    // Typing indicator
     const typingId = 'typing-' + Date.now();
     chat.innerHTML += `
       <div class="chat-msg" id="${typingId}">
@@ -1362,7 +1331,6 @@ font-size: 1.1rem;
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
 
-  // Enter en AI input
   document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('aiInput').addEventListener('keydown', e => {
       if (e.key === 'Enter') sendAI();
