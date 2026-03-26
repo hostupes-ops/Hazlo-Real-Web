@@ -1516,6 +1516,66 @@ transition: all 0.2s;
 .lesson-video { height: 220px; }
 }
 
+/* ── LESSON EXTRA ELEMENTS ── */
+.lesson-part-label {
+font-size: 0.65rem;
+font-weight: 800;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–bright);
+margin-bottom: 10px;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.lesson-part-label::before { content:’’; width:20px; height:2px; background:var(–bright); border-radius:2px; }
+.lesson-h3 { font-family:var(–font-head); font-size:1rem; font-weight:700; color:var(–text); margin:20px 0 12px; }
+.lesson-definition-box { display:flex; gap:16px; background:rgba(61,26,150,0.08); border:2px solid rgba(61,26,150,0.25); border-radius:16px; padding:22px; margin:18px 0; }
+.lesson-def-icon { font-size:1.8rem; flex-shrink:0; margin-top:2px; }
+.lesson-def-label { font-size:0.65rem; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#5B3BB5; margin-bottom:8px; }
+.lesson-def-text { font-size:1rem; font-weight:700; color:#1A0A4A; line-height:1.5; margin-bottom:6px; font-family:var(–font-head); }
+.lesson-def-sub { font-size:0.82rem; color:#5B3BB5; line-height:1.6; }
+.lesson-timeline { display:flex; flex-direction:column; gap:0; margin:20px 0; position:relative; }
+.lesson-timeline::before { content:’’; position:absolute; left:12px; top:20px; bottom:20px; width:2px; background:linear-gradient(180deg,rgba(124,77,255,0.3),rgba(124,77,255,0.05)); }
+.timeline-item { display:flex; gap:20px; padding:14px 0; position:relative; }
+.timeline-dot { width:26px; height:26px; border-radius:50%; flex-shrink:0; margin-top:3px; box-shadow:0 0 0 4px rgba(124,77,255,0.1); position:relative; z-index:1; }
+.timeline-content { flex:1; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:14px 16px; transition:border-color 0.2s; }
+.timeline-content:hover { border-color:rgba(124,77,255,0.2); }
+.timeline-date { font-size:0.68rem; font-weight:700; color:var(–bright); letter-spacing:0.5px; text-transform:uppercase; margin-bottom:4px; }
+.timeline-title { font-family:var(–font-head); font-size:0.88rem; font-weight:700; color:var(–text); margin-bottom:6px; }
+.timeline-desc { font-size:0.78rem; color:var(–muted); line-height:1.7; }
+.lesson-type-badge { display:inline-block; font-size:0.62rem; font-weight:700; padding:2px 8px; border-radius:100px; margin-bottom:8px; }
+.lesson-stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:18px 0; }
+.lesson-stat-box { background:var(–card); border:1px solid var(–border); border-radius:14px; padding:18px; text-align:center; transition:transform 0.2s; }
+.lesson-stat-box:hover { transform:translateY(-2px); }
+.lesson-stat-num { font-family:var(–font-head); font-size:1.6rem; font-weight:800; letter-spacing:-1px; line-height:1; margin-bottom:6px; }
+.lesson-stat-label { font-size:0.72rem; color:var(–muted); line-height:1.5; margin-bottom:6px; }
+.lesson-stat-source { font-size:0.62rem; color:rgba(255,255,255,0.2); }
+.lesson-exercise { background:linear-gradient(135deg,rgba(61,26,150,0.15),rgba(91,59,181,0.08)); border:2px solid rgba(124,77,255,0.3); border-radius:18px; overflow:hidden; }
+.lesson-exercise-header { display:flex; gap:14px; align-items:flex-start; padding:20px; border-bottom:1px solid rgba(124,77,255,0.15); background:rgba(124,77,255,0.08); }
+.lesson-exercise-icon { font-size:1.6rem; flex-shrink:0; }
+.lesson-exercise-title { font-family:var(–font-head); font-size:0.95rem; font-weight:700; color:var(–text); margin-bottom:4px; }
+.lesson-exercise-time { font-size:0.72rem; color:var(–muted); }
+.lesson-exercise-body { padding:20px; display:flex; flex-direction:column; gap:14px; }
+.lesson-exercise-step { display:flex; gap:12px; align-items:flex-start; font-size:0.85rem; color:var(–text); line-height:1.6; }
+.les-num { width:24px; height:24px; background:var(–bright); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:800; color:#fff; flex-shrink:0; margin-top:2px; }
+.lesson-prompt-box { background:rgba(0,0,0,0.3); border:1px solid rgba(124,77,255,0.2); border-radius:12px; padding:16px; margin:4px 0 4px 36px; }
+.lesson-prompt-label { font-size:0.62rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(–bright); margin-bottom:8px; }
+.lesson-prompt-text { font-size:0.82rem; color:rgba(240,236,255,0.8); line-height:1.8; font-style:italic; white-space:pre-wrap; }
+.lesson-exercise-footer { padding:14px 20px; background:rgba(124,77,255,0.06); border-top:1px solid rgba(124,77,255,0.1); font-size:0.78rem; color:var(–muted); line-height:1.6; }
+.lesson-books-grid { display:flex; flex-direction:column; gap:14px; margin:18px 0; }
+.lesson-book-card { display:flex; gap:16px; background:var(–card); border:1px solid var(–border); border-radius:14px; overflow:hidden; transition:all 0.2s; }
+.lesson-book-card:hover { border-color:rgba(124,77,255,0.3); transform:translateX(3px); }
+.lesson-book-cover { width:80px; flex-shrink:0; display:flex; align-items:center; justify-content:center; min-height:100px; }
+.lesson-book-body { padding:14px 16px 14px 0; flex:1; }
+.lesson-book-level { font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
+.lesson-book-title { font-family:var(–font-head); font-size:0.88rem; font-weight:700; color:var(–text); margin-bottom:2px; }
+.lesson-book-author { font-size:0.72rem; color:var(–muted); margin-bottom:8px; }
+.lesson-book-desc { font-size:0.78rem; color:var(–muted); line-height:1.6; margin-bottom:8px; }
+.lesson-book-relevance { font-size:0.72rem; color:var(–light); background:rgba(124,77,255,0.08); border:1px solid var(–border); border-radius:8px; padding:6px 10px; line-height:1.5; }
+@media (max-width:1024px) { .lesson-stats-grid { grid-template-columns:repeat(2,1fr); } .lesson-book-cover { width:60px; } }
+@media (max-width:600px) { .lesson-stats-grid { grid-template-columns:1fr 1fr; } .lesson-book-card { flex-direction:column; } .lesson-book-cover { width:100%; height:80px; min-height:auto; } }
+
 /* SCROLLBAR */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -2462,199 +2522,480 @@ transition: all 0.2s;
   <div class="lesson-video">
     <div class="lesson-video-inner">
       <div class="lesson-video-play">▶</div>
-      <div class="lesson-video-label">Lección 1 · 8 minutos</div>
+      <div class="lesson-video-label">Lección 1 · 18 minutos</div>
     </div>
   </div>
 
   <!-- CONTENT BODY -->
   <div class="lesson-body">
 
+    <!-- OBJETIVOS -->
     <div class="lesson-intro-box">
       <div class="lesson-intro-icon">🎯</div>
       <div>
         <div class="lesson-intro-title">Lo que vas a aprender en esta lección</div>
-        <div class="lesson-intro-text">Qué es la IA de verdad (sin tecnicismos), cómo funciona por dentro en 3 minutos, y por qué la mayoría de la gente — incluidos muchos directivos — la está entendiendo mal. Al terminar tendrás el lenguaje exacto para hablar de IA en cualquier reunión.</div>
+        <div class="lesson-intro-text">La historia completa de la IA en 10 minutos, cómo funciona de verdad por dentro, los tipos que existen, los datos que demuestran por qué esto no es una moda, y tu primer ejercicio práctico real. Al terminar sabrás hablar de IA con criterio en cualquier reunión — y habrás dado tu primer paso práctico.</div>
       </div>
     </div>
 
-    <!-- SECCIÓN 1 -->
+    <!-- ══ PARTE 1: HISTORIA ══ -->
     <div class="lesson-section">
-      <h2 class="lesson-h2">La pregunta que nadie hace bien: ¿Qué es la IA realmente?</h2>
-      <p class="lesson-p">Cuando alguien dice "Inteligencia Artificial", la mayoría imagina robots, películas de ciencia ficción o superordenadores que piensan como humanos. Eso es ficción. La IA real que está cambiando empresas hoy mismo es mucho más concreta — y mucho más útil.</p>
-      <p class="lesson-p">La Inteligencia Artificial es software que aprende de datos para tomar decisiones o generar resultados sin ser programado explícitamente para cada caso. En otras palabras: en vez de decirle exactamente qué hacer en cada situación, le muestras miles de ejemplos y aprende solo.</p>
+      <div class="lesson-part-label">PARTE 1 — Historia</div>
+      <h2 class="lesson-h2" style="color:#1A0A4A;">De la mitología griega a ChatGPT: la historia que nadie te cuenta</h2>
+      <p class="lesson-p" style="color:#3D2A7A;">La IA no nació en 2022 con ChatGPT. Lleva más de 75 años gestándose. Entender su historia te da algo que muy pocos profesionales tienen: perspectiva. Y la perspectiva es lo que te convierte en el experto de la sala.</p>
+
+      <div class="lesson-timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#9B7FFF;"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">600 a.C. — Mitología</div>
+            <div class="timeline-title">Talos, el primer "robot" de la historia</div>
+            <div class="timeline-desc">Los griegos imaginaban a Talos, un gigante de bronce que protegía la isla de Creta. Primera idea registrada de una inteligencia artificial: una máquina que piensa y actúa de forma autónoma. La humanidad lleva milenios soñando con esto.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#7C4DFF;"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">1950 — El Test de Turing</div>
+            <div class="timeline-title">Alan Turing pregunta: "¿Pueden pensar las máquinas?"</div>
+            <div class="timeline-desc">El matemático británico Alan Turing publica "Computing Machinery and Intelligence" y propone una prueba revolucionaria: si una máquina puede conversar de forma indistinguible a un humano, puede considerarse inteligente. Es la primera definición operativa de IA. Turing es también el padre de la informática moderna — y fue perseguido por su homosexualidad y murió a los 41 años. El mundo le debe una deuda enorme.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#5B3BB5;"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">1956 — Dartmouth</div>
+            <div class="timeline-title">Nace oficialmente el campo de la IA</div>
+            <div class="timeline-desc">John McCarthy, Marvin Minsky, Claude Shannon y otros reúnen a los mejores científicos del momento en la Universidad de Dartmouth. Acuñan el término "Inteligencia Artificial" y se proponen un objetivo ambicioso: crear máquinas que puedan hacer cualquier cosa que un humano hace con su mente. Optimismo desbordante. Resultados... modestos.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#3D1A96;"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">1969–1993 — Los "Inviernos de la IA"</div>
+            <div class="timeline-title">Dos décadas de promesas rotas y financiación recortada</div>
+            <div class="timeline-desc">El campo prometió demasiado, entregó demasiado poco. Los gobiernos cortaron la financiación. Los investigadores se dispersaron. Se llaman "inviernos de la IA" porque todo se congeló. Pero en los laboratorios, el trabajo seguía. Esta es la lección más importante de la historia de la IA: los retrocesos son temporales; la dirección, inevitable.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#1D4ED8;"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">1997 — Deep Blue</div>
+            <div class="timeline-title">Una máquina derrota al campeón mundial de ajedrez</div>
+            <div class="timeline-desc">Deep Blue de IBM derrota a Garry Kasparov, el mejor ajedrecista del mundo. La máquina calculaba 200 millones de posiciones por segundo. El mundo se queda helado. Primera vez que la IA demuestra que puede superar al humano en una tarea compleja. Kasparov lo llamó "el fin de algo".</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#0369A1;"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2012 — La revolución del Deep Learning</div>
+            <div class="timeline-title">Las redes neuronales profundas lo cambian todo</div>
+            <div class="timeline-desc">Geoffrey Hinton y su equipo publican AlexNet, que aplasta a todos los competidores en reconocimiento de imágenes. El Deep Learning — redes neuronales con muchas capas — demuestra que con suficientes datos y potencia de cómputo, las máquinas pueden aprender cualquier cosa. Es el momento en que la IA pasa de ser una curiosidad académica a una tecnología industrial. Hinton ganó el Nobel de Física en 2024 por este trabajo.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#166534;"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2016 — AlphaGo</div>
+            <div class="timeline-title">La IA derrota al mejor jugador de Go del mundo</div>
+            <div class="timeline-desc">DeepMind crea AlphaGo, que vence al campeón mundial Lee Sedol en Go — un juego con más combinaciones posibles que átomos hay en el universo. Lo más impresionante: la IA inventa movimientos que ningún humano había considerado en 2.500 años de historia del juego. Es el momento en que queda claro que la IA no solo imita — puede crear.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#A16207;"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2020 — GPT-3</div>
+            <div class="timeline-title">175.000 millones de parámetros cambian el lenguaje</div>
+            <div class="timeline-desc">OpenAI lanza GPT-3, un modelo de lenguaje con 175 mil millones de parámetros entrenado con casi todo el texto de internet. Puede escribir artículos, código, poesía, responder preguntas. Por primera vez, la interacción con una IA parece natural. El mundo empieza a tomar nota.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#BE185D;"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">Nov 2022 — ChatGPT</div>
+            <div class="timeline-title">100 millones de usuarios en 2 meses. Nunca antes visto.</div>
+            <div class="timeline-desc">OpenAI lanza ChatGPT al público. En 5 días tiene 1 millón de usuarios. En 2 meses, 100 millones — la adopción más rápida de cualquier producto en la historia de internet. Netflix tardó 3,5 años en llegar a ese número. Instagram, 2,5 años. ChatGPT, 2 meses. El mundo cambió ese noviembre.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#22C55E;"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2024–Hoy — La era de los Agentes</div>
+            <div class="timeline-title">La IA deja de responder preguntas y empieza a hacer cosas</div>
+            <div class="timeline-desc">GPT-4, Claude 3, Gemini Ultra, Llama 3. Los modelos son multimodales (ven, escuchan, leen). Los "agentes de IA" actúan de forma autónoma: navegan por webs, ejecutan tareas, mandan emails, toman decisiones. La velocidad de avance se duplica cada 6 meses. Estamos en el mayor cambio tecnológico desde internet — y probablemente desde la Revolución Industrial.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ PARTE 2: QUÉ ES ══ -->
+    <div class="lesson-section">
+      <div class="lesson-part-label">PARTE 2 — Fundamentos</div>
+      <h2 class="lesson-h2" style="color:#1A0A4A;">¿Qué es realmente la IA? La definición que sí funciona</h2>
+      <p class="lesson-p" style="color:#3D2A7A;">Cuando alguien dice "Inteligencia Artificial", la mayoría imagina robots o ciencia ficción. Eso es película. La IA real que está cambiando empresas hoy es concreta, accesible y — si sabes usarla — una ventaja competitiva enorme.</p>
+
+      <div class="lesson-definition-box">
+        <div class="lesson-def-icon">📖</div>
+        <div>
+          <div class="lesson-def-label">DEFINICIÓN DE TRABAJO</div>
+          <div class="lesson-def-text">La Inteligencia Artificial es software que aprende de datos para tomar decisiones o generar resultados, sin ser programado explícitamente para cada caso.</div>
+          <div class="lesson-def-sub">En otras palabras: en vez de decirle exactamente qué hacer, le muestras ejemplos y aprende solo.</div>
+        </div>
+      </div>
 
       <div class="lesson-analogy">
         <div class="lesson-analogy-icon">💡</div>
         <div>
           <div class="lesson-analogy-title">La analogía que lo explica todo</div>
-          <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;margin:0;">Imagina que contratas a un empleado nuevo. En vez de darle un manual con todas las respuestas posibles, le pones a ver 10.000 llamadas de atención al cliente anteriores. Después de eso, sabe responder solo. Eso es, básicamente, cómo funciona un modelo de IA.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SECCIÓN 2 -->
-    <div class="lesson-section">
-      <h2 class="lesson-h2">Los 3 tipos de IA que existen hoy — y cuál te importa a ti</h2>
-      <p class="lesson-p">No toda la IA es igual. Hay tres tipos principales, y saber diferenciarlos te dará una ventaja enorme en cualquier conversación profesional:</p>
-
-      <div class="lesson-cards-row">
-        <div class="lesson-type-card">
-          <div class="lesson-type-icon" style="background:rgba(124,77,255,0.15);">🤖</div>
-          <div class="lesson-type-name">IA Generativa</div>
-          <div class="lesson-type-desc">Crea contenido nuevo: texto, imágenes, código, audio. ChatGPT, Claude, Midjourney. <strong>La más relevante para tu trabajo hoy.</strong></div>
-        </div>
-        <div class="lesson-type-card">
-          <div class="lesson-type-icon" style="background:rgba(34,197,94,0.12);">📊</div>
-          <div class="lesson-type-name">IA Predictiva</div>
-          <div class="lesson-type-desc">Predice resultados a partir de datos históricos. Netflix recomendándote series, Spotify con música, bancos detectando fraude.</div>
-        </div>
-        <div class="lesson-type-card">
-          <div class="lesson-type-icon" style="background:rgba(255,107,53,0.12);">⚙️</div>
-          <div class="lesson-type-name">IA de Automatización</div>
-          <div class="lesson-type-desc">Ejecuta tareas repetitivas de forma autónoma. Bots de atención al cliente, clasificación de emails, procesos de facturación.</div>
+          <p style="font-size:0.88rem;color:#3D2A7A;line-height:1.7;margin:0;">Imagina que contratas a un empleado nuevo. En vez de darle un manual con todas las respuestas posibles, le pones a ver 50.000 llamadas de atención al cliente anteriores. Después de eso, sabe responder solo. Eso es, básicamente, cómo funciona un modelo de IA. No tiene reglas — tiene experiencia.</p>
         </div>
       </div>
 
-      <div class="lesson-highlight">
-        <strong>Lo importante:</strong> En tu trabajo como Ingeniero o Director de IA, vas a trabajar con los tres tipos. Pero el 80% de los casos de uso empresariales reales hoy son IA Generativa + Automatización combinadas.
-      </div>
-    </div>
-
-    <!-- SECCIÓN 3 -->
-    <div class="lesson-section">
-      <h2 class="lesson-h2">Cómo funciona por dentro — en 3 minutos</h2>
-      <p class="lesson-p">No necesitas saber matemáticas ni programar para entender esto. Solo necesitas el concepto:</p>
+      <h3 class="lesson-h3">Cómo funciona por dentro — en 4 pasos simples</h3>
 
       <div class="lesson-steps">
         <div class="lesson-step">
           <div class="lesson-step-num">1</div>
           <div>
             <div class="lesson-step-title">Datos de entrada</div>
-            <div class="lesson-step-desc">Le das al modelo datos: texto, imágenes, números, historial de conversaciones. Cuantos más y mejores datos, más inteligente el modelo.</div>
+            <div class="lesson-step-desc">Le das al modelo datos: texto, imágenes, números, historial. Cuantos más y mejores datos, más inteligente el resultado. GPT-4 fue entrenado con aproximadamente 1 billón de palabras — prácticamente todo el texto publicado en internet hasta 2023.</div>
           </div>
         </div>
         <div class="lesson-step">
           <div class="lesson-step-num">2</div>
           <div>
             <div class="lesson-step-title">Entrenamiento</div>
-            <div class="lesson-step-desc">El modelo procesa esos datos millones de veces, ajustando sus "parámetros" internos hasta aprender a reconocer patrones y generar respuestas útiles.</div>
+            <div class="lesson-step-desc">El modelo procesa esos datos millones de veces, ajustando miles de millones de "parámetros" internos hasta aprender a reconocer patrones. Es como pulir un músculo: cada repetición lo hace más preciso. GPT-4 tiene estimados 1,8 billones de parámetros.</div>
           </div>
         </div>
         <div class="lesson-step">
           <div class="lesson-step-num">3</div>
           <div>
-            <div class="lesson-step-title">Inferencia</div>
-            <div class="lesson-step-desc">Cuando tú le haces una pregunta o le das una tarea, aplica todo lo aprendido para darte una respuesta. Esto es lo que ves cuando usas ChatGPT o Claude.</div>
+            <div class="lesson-step-title">Inferencia (el momento en que lo usas tú)</div>
+            <div class="lesson-step-desc">Cuando escribes un prompt, el modelo aplica todo lo aprendido para predecir la respuesta más útil. No "piensa" como tú — genera la siguiente palabra más probable basándose en patrones. Pero el resultado parece inteligente porque los patrones son enormemente complejos.</div>
           </div>
         </div>
         <div class="lesson-step">
           <div class="lesson-step-num">4</div>
           <div>
-            <div class="lesson-step-title">Mejora continua</div>
-            <div class="lesson-step-desc">Con cada interacción y feedback, el modelo puede seguir mejorando. Por eso los modelos de hoy son radicalmente mejores que los de hace 2 años.</div>
+            <div class="lesson-step-title">Feedback y mejora</div>
+            <div class="lesson-step-desc">Con cada interacción y retroalimentación humana (RLHF — Reinforcement Learning from Human Feedback), el modelo mejora. Es por eso que ChatGPT hoy es radicalmente mejor que hace 2 años. Los modelos nunca dejan de aprender.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SECCIÓN 4 — SITUACIÓN REAL -->
+    <!-- ══ PARTE 3: TIPOS ══ -->
     <div class="lesson-section">
+      <div class="lesson-part-label">PARTE 3 — Los tipos que importan</div>
+      <h2 class="lesson-h2" style="color:#1A0A4A;">Los 3 tipos de IA que existen — y cuál te afecta a ti</h2>
+      <p class="lesson-p" style="color:#3D2A7A;">No toda la IA es igual. Hay tres tipos principales, y saber diferenciarlos te dará ventaja en cualquier conversación profesional o presentación a dirección.</p>
+
+      <div class="lesson-cards-row">
+        <div class="lesson-type-card">
+          <div class="lesson-type-icon" style="background:rgba(124,77,255,0.15);">✍️</div>
+          <div class="lesson-type-name">IA Generativa</div>
+          <div class="lesson-type-badge" style="background:rgba(34,197,94,0.12);color:#22C55E;">La más relevante hoy</div>
+          <div class="lesson-type-desc">Crea contenido nuevo: texto, imágenes, código, audio, vídeo. ChatGPT, Claude, Midjourney, Sora. El 80% de los casos de uso empresariales son de este tipo. Es la que cambia tu trabajo desde mañana.</div>
+        </div>
+        <div class="lesson-type-card">
+          <div class="lesson-type-icon" style="background:rgba(34,197,94,0.12);">📊</div>
+          <div class="lesson-type-name">IA Predictiva</div>
+          <div class="lesson-type-badge" style="background:rgba(255,107,53,0.1);color:#FF6B35;">Ya está en todas partes</div>
+          <div class="lesson-type-desc">Predice resultados a partir de datos históricos. Netflix eligiendo qué serie te muestra, Spotify en el modo shuffle, Amazon en sus recomendaciones, bancos detectando fraude en tiempo real. Llevas años usándola sin saberlo.</div>
+        </div>
+        <div class="lesson-type-card">
+          <div class="lesson-type-icon" style="background:rgba(255,107,53,0.12);">⚙️</div>
+          <div class="lesson-type-name">IA de Automatización</div>
+          <div class="lesson-type-badge" style="background:rgba(179,157,255,0.12);color:#B39DFF;">El gran ahorrador de tiempo</div>
+          <div class="lesson-type-desc">Ejecuta tareas repetitivas de forma autónoma sin intervención humana. Clasificación de emails, procesamiento de facturas, respuestas automáticas, alertas, informes. Make y Zapier son sus herramientas. Sin código.</div>
+        </div>
+      </div>
+
+      <div class="lesson-highlight" style="border-color:#3D1A96;background:rgba(61,26,150,0.08);color:#3D2A7A;">
+        <strong style="color:#1A0A4A;">Lo clave para este curso:</strong> Como Ingeniero/Director de IA, vas a trabajar con los tres tipos. Pero el 80% de los casos de uso empresariales reales hoy son Generativa + Automatización combinadas. Eso es lo que aprenderás a implementar.
+      </div>
+    </div>
+
+    <!-- ══ PARTE 4: SITUACIÓN REAL ══ -->
+    <div class="lesson-section">
+      <div class="lesson-part-label">PARTE 4 — Situación real de empresa</div>
       <div class="lesson-real-case">
-        <div class="lesson-real-badge">📁 SITUACIÓN REAL DE EMPRESA</div>
-        <h3 class="lesson-real-title">El lunes de Ana en Recursos Humanos</h3>
-        <p class="lesson-p" style="color:rgba(240,236,255,0.75);">Ana es directora de RRHH en una empresa de 200 personas. Cada semana recibe 150 CVs para 3 puestos distintos. Antes tardaba 8 horas en hacer una primera criba. Ahora usa IA generativa con un prompt específico que analiza cada CV contra los requisitos del puesto y le devuelve un ranking con justificación en menos de 10 minutos.</p>
-        <p class="lesson-p" style="color:rgba(240,236,255,0.75);">¿Programó algo? No. ¿Contrató a un ingeniero? No. Solo aprendió a usar la herramienta correcta con el prompt correcto.</p>
+        <div class="lesson-real-badge">📁 CASO REAL — EMPRESA MEDIANA · ESPAÑA</div>
+        <h3 class="lesson-real-title">El lunes de Ana: de 8 horas a 12 minutos</h3>
+        <p class="lesson-p" style="color:rgba(240,236,255,0.8);">Ana es Directora de RRHH en una empresa de 200 personas en Madrid. Cada semana recibe 150 CVs para 3 puestos distintos. Antes tardaba entre 6 y 8 horas en hacer una primera criba manual: abrir PDF, leer, comparar, clasificar, anotar.</p>
+        <p class="lesson-p" style="color:rgba(240,236,255,0.8);">Hoy, Ana sube los 150 CVs a una carpeta, ejecuta un prompt en Claude con los requisitos del puesto, y en 12 minutos recibe un ranking priorizado con justificación por candidato, puntos fuertes y puntos débiles.</p>
+        <p class="lesson-p" style="color:rgba(240,236,255,0.8);"><strong style="color:#B39DFF;">¿Programó algo? No. ¿Contrató a un ingeniero? No. ¿Usó herramientas de pago especiales? No.</strong> Solo aprendió a estructurar un prompt correcto con Claude. Eso es todo.</p>
         <div class="lesson-real-result">
-          <span>⏱ Antes: 8 horas</span>
+          <span style="color:rgba(240,236,255,0.6);">⏱ Antes: 6-8 horas cada semana</span>
           <span style="color:var(--bright);">→</span>
-          <span style="color:#4ADE80;">Ahora: 10 minutos</span>
-          <span style="color:var(--muted);">· Mismo resultado · Sin código</span>
+          <span style="color:#4ADE80;">Ahora: 12 minutos</span>
+          <span style="color:rgba(240,236,255,0.4);">· Mismo resultado · Sin código · Sin coste extra</span>
+        </div>
+        <div style="margin-top:16px;padding:14px;background:rgba(255,255,255,0.05);border-radius:10px;font-size:0.78rem;color:rgba(240,236,255,0.5);">
+          💡 <strong style="color:rgba(240,236,255,0.7);">En el Módulo 2 aprenderás exactamente el prompt que usa Ana</strong> — y cómo adaptarlo a tu rol específico.
         </div>
       </div>
     </div>
 
-    <!-- SECCIÓN 5 -->
+    <!-- ══ PARTE 5: DATOS ══ -->
     <div class="lesson-section">
-      <h2 class="lesson-h2">Por qué casi todo el mundo entiende la IA mal</h2>
-      <p class="lesson-p">Hay tres malentendidos que frenan a profesionales y empresas enteras. Identifícalos — y evita caer en ellos:</p>
+      <div class="lesson-part-label">PARTE 5 — Los números que debes conocer</div>
+      <h2 class="lesson-h2" style="color:#1A0A4A;">Los datos que demuestran que esto no es una moda</h2>
+      <p class="lesson-p" style="color:#3D2A7A;">Fuentes: PwC AI Jobs Barometer 2025, World Economic Forum Future of Jobs 2025, DigitalES 2024, IEBS Business School 2025.</p>
+
+      <div class="lesson-stats-grid">
+        <div class="lesson-stat-box">
+          <div class="lesson-stat-num" style="color:#7C4DFF;">15,7 B$</div>
+          <div class="lesson-stat-label">Contribución estimada de la IA a la economía global en 2025</div>
+          <div class="lesson-stat-source">PwC / IEBS</div>
+        </div>
+        <div class="lesson-stat-box">
+          <div class="lesson-stat-num" style="color:#22C55E;">+56%</div>
+          <div class="lesson-stat-label">Más salario para trabajadores con habilidades en IA vs. sin ellas</div>
+          <div class="lesson-stat-source">PwC AI Barometer 2025</div>
+        </div>
+        <div class="lesson-stat-box">
+          <div class="lesson-stat-num" style="color:#FF6B35;">+454%</div>
+          <div class="lesson-stat-label">Crecimiento de ofertas de empleo en IA en España en los últimos 5 años</div>
+          <div class="lesson-stat-source">DigitalES 2024</div>
+        </div>
+        <div class="lesson-stat-box">
+          <div class="lesson-stat-num" style="color:#0EA5E9;">+40%</div>
+          <div class="lesson-stat-label">Aumento de productividad promedio en empresas que han integrado IA</div>
+          <div class="lesson-stat-source">IEBS 2025</div>
+        </div>
+        <div class="lesson-stat-box">
+          <div class="lesson-stat-num" style="color:#EAB308;">170M</div>
+          <div class="lesson-stat-label">Nuevos puestos de trabajo que creará la IA para 2030 (vs. 92M que eliminará)</div>
+          <div class="lesson-stat-source">WEF Future of Jobs 2025</div>
+        </div>
+        <div class="lesson-stat-box">
+          <div class="lesson-stat-num" style="color:#BE185D;">75%</div>
+          <div class="lesson-stat-label">De trabajadores del conocimiento ya usan IA a diario. La mayoría sin que su empresa lo sepa.</div>
+          <div class="lesson-stat-source">Microsoft / LinkedIn 2024</div>
+        </div>
+      </div>
+
+      <div class="lesson-highlight" style="background:rgba(34,197,94,0.06);border-color:#22C55E;color:#1A3A2A;">
+        <strong style="color:#14532D;">La conclusión que importa:</strong> <span style="color:#166534;">La IA no va a reemplazar tu trabajo. El profesional que sabe usar IA reemplazará al que no sabe. Ya está pasando. La pregunta no es si aprender, sino cuándo empiezas — y tú ya empezaste.</span>
+      </div>
+    </div>
+
+    <!-- ══ PARTE 6: LOS MALENTENDIDOS ══ -->
+    <div class="lesson-section">
+      <div class="lesson-part-label">PARTE 6 — Desmontando mitos</div>
+      <h2 class="lesson-h2" style="color:#1A0A4A;">Los 3 malentendidos que frenan a empresas enteras</h2>
 
       <div class="lesson-misconceptions">
         <div class="lesson-misconception">
           <div class="lesson-misconception-icon">❌</div>
           <div>
-            <div class="lesson-misconception-title">"La IA va a reemplazar mi trabajo"</div>
-            <div class="lesson-misconception-text">La realidad: la IA reemplaza tareas, no personas. El profesional que sabe usar IA reemplaza al que no sabe. La pregunta no es si usarla, sino cuándo empiezas.</div>
+            <div class="lesson-misconception-title" style="color:#1A0A4A;">"La IA va a reemplazar mi trabajo"</div>
+            <div class="lesson-misconception-text" style="color:#3D2A7A;">La realidad según el WEF 2025: la IA creará 170 millones de puestos nuevos y eliminará 92 millones — un saldo neto positivo de 78 millones. Los que desaparecen son trabajos repetitivos y administrativos de bajo valor. Los que nacen requieren criterio, creatividad y — exactamente — saber usar IA.</div>
           </div>
         </div>
         <div class="lesson-misconception">
           <div class="lesson-misconception-icon">❌</div>
           <div>
-            <div class="lesson-misconception-title">"Necesito saber programar para usar IA"</div>
-            <div class="lesson-misconception-text">La realidad: el 90% de los casos de uso empresariales no requieren código. Las herramientas no-code de hoy permiten implementar soluciones de IA complejas sin escribir una sola línea.</div>
+            <div class="lesson-misconception-title" style="color:#1A0A4A;">"Necesito saber programar para usar IA"</div>
+            <div class="lesson-misconception-text" style="color:#3D2A7A;">El 90% de los casos de uso empresariales no requieren código. ChatGPT, Claude, Make, Zapier, Notion AI — todas son herramientas no-code. El ex-CEO de Google Eric Schmidt dijo en 2024: "El prompt engineering es la habilidad más importante del siglo XXI, y no requiere saber programar."</div>
           </div>
         </div>
         <div class="lesson-misconception">
           <div class="lesson-misconception-icon">❌</div>
           <div>
-            <div class="lesson-misconception-title">"La IA siempre tiene razón"</div>
-            <div class="lesson-misconception-text">La realidad: los modelos de IA cometen errores, inventan datos ("alucinaciones") y tienen sesgos. Saber cuándo confiar y cuándo verificar es una habilidad clave del profesional de IA.</div>
+            <div class="lesson-misconception-title" style="color:#1A0A4A;">"La IA siempre tiene razón"</div>
+            <div class="lesson-misconception-text" style="color:#3D2A7A;">Los modelos "alucinan" — inventan datos con total confianza. ChatGPT cita artículos académicos que no existen. Claude puede equivocarse en cálculos complejos. Saber cuándo verificar y cuándo confiar es la diferencia entre un usuario amateur y un profesional de IA. Lo verás en profundidad en el Módulo 3.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- QUIZ -->
+    <!-- ══ PARTE 7: PRÁCTICA ══ -->
+    <div class="lesson-section">
+      <div class="lesson-part-label">PARTE 7 — Tu primer ejercicio práctico</div>
+      <h2 class="lesson-h2" style="color:#1A0A4A;">Hazlo ahora: tu primer prompt profesional</h2>
+      <p class="lesson-p" style="color:#3D2A7A;">La teoría sin práctica es inútil. HazloReal está diseñado para que aprendas haciendo. Aquí tienes tu primer ejercicio real — tarda menos de 10 minutos y lo puedes usar mañana mismo en tu trabajo.</p>
+
+      <div class="lesson-exercise">
+        <div class="lesson-exercise-header">
+          <span class="lesson-exercise-icon">⚡</span>
+          <div>
+            <div class="lesson-exercise-title">Ejercicio 1 — El Prompt de Presentación</div>
+            <div class="lesson-exercise-time">⏱ 10 minutos · Nivel básico · Sin instalación</div>
+          </div>
+        </div>
+        <div class="lesson-exercise-body">
+          <div class="lesson-exercise-step">
+            <span class="les-num">1</span>
+            <span style="color:#3D2A7A;">Abre <strong>ChatGPT.com</strong> o <strong>Claude.ai</strong> en tu navegador (ambos tienen versión gratuita)</span>
+          </div>
+          <div class="lesson-exercise-step">
+            <span class="les-num">2</span>
+            <span style="color:#3D2A7A;">Copia y pega este prompt, rellenando los corchetes con tu información:</span>
+          </div>
+          <div class="lesson-prompt-box">
+            <div class="lesson-prompt-label">📋 COPIA ESTE PROMPT</div>
+            <div class="lesson-prompt-text">Actúa como un experto en [tu sector o industria]. Soy [tu puesto de trabajo] en una empresa de [tamaño aproximado]. Dame 5 ideas concretas y aplicables de cómo podría usar la IA generativa para ahorrar tiempo en mi trabajo esta semana. Para cada idea, indica: qué herramienta usar (ChatGPT, Claude u otra), cómo exactamente aplicarla, y cuánto tiempo estimarías que ahorraría al día. Sé específico y práctico, sin tecnicismos.</div>
+          </div>
+          <div class="lesson-exercise-step">
+            <span class="les-num">3</span>
+            <span style="color:#3D2A7A;">Lee las 5 ideas. Elige la que más tiempo te ahorraría. <strong>Pruébala hoy mismo.</strong></span>
+          </div>
+          <div class="lesson-exercise-step">
+            <span class="les-num">4</span>
+            <span style="color:#3D2A7A;">Guarda el resultado — lo necesitarás para el Entregable 1 al final del Módulo.</span>
+          </div>
+        </div>
+        <div class="lesson-exercise-footer">
+          💡 Este ejercicio tiene un objetivo oculto: hacerte perder el miedo. La primera vez que uses IA de forma real en tu trabajo, algo cambia. Ese es el objetivo de HazloReal.
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ QUIZ ══ -->
     <div class="lesson-section">
       <div class="lesson-quiz">
         <div class="lesson-quiz-title">🧠 Comprueba lo que has aprendido</div>
-        <div class="lesson-quiz-q">¿Cuál de estos es el tipo de IA más relevante para el trabajo de oficina hoy?</div>
+        <div class="lesson-quiz-q">Según el WEF Future of Jobs 2025, ¿qué pasará con el empleo y la IA en 2030?</div>
         <div class="lesson-quiz-options" id="quizOptions">
-          <button type="button" class="quiz-opt" onclick="answerQuiz(this, false)">IA de robótica industrial</button>
-          <button type="button" class="quiz-opt" onclick="answerQuiz(this, true)">IA Generativa + Automatización</button>
-          <button type="button" class="quiz-opt" onclick="answerQuiz(this, false)">IA de conducción autónoma</button>
-          <button type="button" class="quiz-opt" onclick="answerQuiz(this, false)">IA de diagnóstico médico</button>
+          <button type="button" class="quiz-opt" onclick="answerQuiz(this, false)">La IA eliminará más empleos de los que creará — saldo negativo</button>
+          <button type="button" class="quiz-opt" onclick="answerQuiz(this, true)">Creará 170M puestos y eliminará 92M — saldo neto positivo de 78M</button>
+          <button type="button" class="quiz-opt" onclick="answerQuiz(this, false)">El impacto será mínimo — menos del 5% de los trabajos cambiarán</button>
+          <button type="button" class="quiz-opt" onclick="answerQuiz(this, false)">Solo los empleos técnicos serán afectados</button>
         </div>
         <div class="lesson-quiz-feedback" id="quizFeedback" style="display:none;"></div>
       </div>
     </div>
 
-    <!-- RESUMEN -->
+    <!-- ══ RESUMEN ══ -->
     <div class="lesson-section">
       <div class="lesson-summary">
-        <div class="lesson-summary-title">📌 Resumen de esta lección</div>
+        <div class="lesson-summary-title">📌 Los 7 puntos clave de esta lección</div>
         <div class="lesson-summary-items">
-          <div class="lesson-summary-item">✓ La IA es software que aprende de datos — no son robots ni ciencia ficción</div>
-          <div class="lesson-summary-item">✓ Existen 3 tipos: Generativa, Predictiva y de Automatización</div>
-          <div class="lesson-summary-item">✓ Para el trabajo de hoy, Generativa + Automatización son las más relevantes</div>
-          <div class="lesson-summary-item">✓ No necesitas programar para implementar IA en tu empresa</div>
-          <div class="lesson-summary-item">✓ Los modelos cometen errores — verificar es una habilidad profesional</div>
+          <div class="lesson-summary-item">✓ La IA lleva 75 años en desarrollo — ChatGPT fue el momento en que llegó al gran público, no donde empezó</div>
+          <div class="lesson-summary-item">✓ Definición clara: software que aprende de datos para generar resultados sin reglas explícitas</div>
+          <div class="lesson-summary-item">✓ Tres tipos: Generativa (crea contenido), Predictiva (predice), Automatización (ejecuta) — las tres te afectan</div>
+          <div class="lesson-summary-item">✓ Datos reales: +56% salario, +454% empleos en IA en España, +40% productividad en empresas que la usan</div>
+          <div class="lesson-summary-item">✓ La IA creará más empleos de los que destruirá — pero solo para quienes se adapten</div>
+          <div class="lesson-summary-item">✓ No necesitas programar. El 90% de casos de uso son no-code</div>
+          <div class="lesson-summary-item">✓ Ya tienes tu primer prompt profesional listo para usar hoy</div>
         </div>
       </div>
     </div>
 
-    <!-- TUTOR IA -->
+    <!-- ══ LIBROS ══ -->
+    <div class="lesson-section">
+      <div class="lesson-part-label">LECTURAS RECOMENDADAS</div>
+      <h2 class="lesson-h2" style="color:#1A0A4A;">Los mejores libros sobre lo que has aprendido hoy</h2>
+      <p class="lesson-p" style="color:#3D2A7A;">Estos libros amplían directamente los conceptos de esta lección. No es una lista de 50 — son los 5 que realmente valen la pena para este módulo, seleccionados por relevancia y accesibilidad.</p>
+
+      <div class="lesson-books-grid">
+
+        <div class="lesson-book-card">
+          <div class="lesson-book-cover" style="background:linear-gradient(135deg,#1A0A4A,#7C4DFF);">
+            <span style="font-size:2rem;">🤝</span>
+          </div>
+          <div class="lesson-book-body">
+            <div class="lesson-book-level" style="color:#7C4DFF;">Nivel: Principiante-Intermedio</div>
+            <div class="lesson-book-title">Co-inteligencia: Vivir y trabajar con IA</div>
+            <div class="lesson-book-author">Ethan Mollick · 2024</div>
+            <div class="lesson-book-desc">El libro más recomendado por directivos en 2024. Mollick, profesor de Wharton, explica cómo integrar la IA en el trabajo real sin tecnicismos. Incluye ejemplos prácticos de cada industria. Angela Duckworth lo llama "el mejor libro sobre IA generativa".</div>
+            <div class="lesson-book-relevance">🎯 Perfecto para esta lección: capítulos 1-3 sobre qué es y cómo funciona la IA generativa</div>
+          </div>
+        </div>
+
+        <div class="lesson-book-card">
+          <div class="lesson-book-cover" style="background:linear-gradient(135deg,#052E16,#22C55E);">
+            <span style="font-size:2rem;">🧠</span>
+          </div>
+          <div class="lesson-book-body">
+            <div class="lesson-book-level" style="color:#22C55E;">Nivel: Principiante</div>
+            <div class="lesson-book-title">IA para directivos: Fundamentos sin tecnicismos</div>
+            <div class="lesson-book-author">Tom Taulli · 2023</div>
+            <div class="lesson-book-desc">La guía más clara para entender los conceptos básicos de IA sin matemáticas ni código. Ideal para profesionales que necesitan tomar decisiones sobre IA sin ser técnicos. Capítulos cortos, ejemplos reales.</div>
+            <div class="lesson-book-relevance">🎯 Perfecto para esta lección: capítulos sobre historia y tipos de IA</div>
+          </div>
+        </div>
+
+        <div class="lesson-book-card">
+          <div class="lesson-book-cover" style="background:linear-gradient(135deg,#1C1500,#EAB308);">
+            <span style="font-size:2rem;">⚙️</span>
+          </div>
+          <div class="lesson-book-body">
+            <div class="lesson-book-level" style="color:#EAB308;">Nivel: Intermedio</div>
+            <div class="lesson-book-title">El algoritmo maestro</div>
+            <div class="lesson-book-author">Pedro Domingos · 2015</div>
+            <div class="lesson-book-desc">Domingos explica cómo funciona el machine learning de forma accesible. Aunque de 2015, sigue siendo la mejor explicación de cómo las máquinas "aprenden". Fundamental para entender de dónde vienen los modelos actuales.</div>
+            <div class="lesson-book-relevance">🎯 Perfecto para esta lección: parte 1 sobre qué es el aprendizaje automático</div>
+          </div>
+        </div>
+
+        <div class="lesson-book-card">
+          <div class="lesson-book-cover" style="background:linear-gradient(135deg,#4A0010,#BE123C);">
+            <span style="font-size:2rem;">⚠️</span>
+          </div>
+          <div class="lesson-book-body">
+            <div class="lesson-book-level" style="color:#F43F5E;">Nivel: Intermedio-Avanzado</div>
+            <div class="lesson-book-title">Superinteligencia: Caminos, peligros, estrategias</div>
+            <div class="lesson-book-author">Nick Bostrom · 2014</div>
+            <div class="lesson-book-desc">El libro que hizo reflexionar a Elon Musk y Bill Gates sobre los riesgos de la IA. Bostrom plantea escenarios sobre un futuro con IAs más capaces que los humanos. Provocador y necesario para entender el debate ético que rodea la IA.</div>
+            <div class="lesson-book-relevance">🎯 Perfecto para esta lección: capítulo 1 sobre la historia y el horizonte de la IA</div>
+          </div>
+        </div>
+
+        <div class="lesson-book-card">
+          <div class="lesson-book-cover" style="background:linear-gradient(135deg,#001A2E,#0369A1);">
+            <span style="font-size:2rem;">🔮</span>
+          </div>
+          <div class="lesson-book-body">
+            <div class="lesson-book-level" style="color:#0EA5E9;">Nivel: Principiante</div>
+            <div class="lesson-book-title">Humanos compatibles con IA</div>
+            <div class="lesson-book-author">Stuart Russell · 2019</div>
+            <div class="lesson-book-desc">El Guardian lo llamó "el libro más importante sobre IA en 2019". Russell, uno de los autores del libro de texto de IA más usado en universidades del mundo, explica por qué la IA puede ser buena para la humanidad si la construimos correctamente.</div>
+            <div class="lesson-book-relevance">🎯 Perfecto para esta lección: parte 1 sobre qué es la IA y dónde estamos hoy</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ TUTOR IA ══ -->
     <div class="lesson-section">
       <div class="lesson-tutor">
         <div class="lesson-tutor-header">
           <div class="lesson-tutor-av">🤖</div>
           <div>
             <div class="lesson-tutor-name">Tutor IA — HazloReal</div>
-            <div class="lesson-tutor-status">Lección 1 · Módulo 1 cargado</div>
+            <div class="lesson-tutor-status">Lección 1 cargada · Contexto completo activado</div>
           </div>
-          <div class="ai-badge">✦ Contexto activado</div>
+          <div class="ai-badge">✦ IA Avanzada</div>
         </div>
         <div class="lesson-tutor-suggestions">
           <div style="font-size:0.72rem;color:var(--muted);margin-bottom:8px;">Preguntas frecuentes en esta lección:</div>
           <div class="tutor-suggest-row">
             <button type="button" class="tutor-suggest" onclick="askTutor('¿Cuál es la diferencia entre IA generativa y machine learning?')">¿Diferencia entre IA generativa y machine learning?</button>
-            <button type="button" class="tutor-suggest" onclick="askTutor('¿Qué es una alucinación en IA y cómo evitarla?')">¿Qué es una alucinación en IA?</button>
-            <button type="button" class="tutor-suggest" onclick="askTutor('Dame un ejemplo real de IA generativa en logística')">Ejemplo real en mi sector</button>
+            <button type="button" class="tutor-suggest" onclick="askTutor('¿Qué es una alucinación en IA y cómo detectarla en el trabajo?')">¿Qué es una alucinación en IA?</button>
+            <button type="button" class="tutor-suggest" onclick="askTutor('Dame un ejemplo real de cómo aplicar IA generativa en recursos humanos')">Ejemplo práctico en RRHH</button>
+            <button type="button" class="tutor-suggest" onclick="askTutor('¿Qué pasó exactamente en la Conferencia de Dartmouth en 1956?')">Más sobre la historia de la IA</button>
           </div>
         </div>
         <div class="ai-chat" id="lessonAiChat" style="max-height:220px;">
           <div class="chat-msg">
             <div class="chat-mini-av ai">🤖</div>
-            <div class="chat-bubble">Hola, soy tu tutor para esta lección. Estoy contextualizado con el contenido de "¿Qué es realmente la IA?" — pregúntame cualquier duda sobre lo que acabas de ver y te respondo con ejemplos adaptados a tu situación.</div>
+            <div class="chat-bubble">Hola, soy tu tutor para esta lección. Tengo cargado todo el contexto — la historia de la IA, los tipos, los datos del mercado laboral y el ejercicio práctico. Pregúntame cualquier cosa sobre lo que acabas de ver y te respondo con ejemplos adaptados a tu situación real.</div>
           </div>
         </div>
         <div class="ai-input-row">
@@ -2664,12 +3005,12 @@ transition: all 0.2s;
       </div>
     </div>
 
-    <!-- NAVEGACIÓN -->
+    <!-- ══ NAVEGACIÓN ══ -->
     <div class="lesson-nav-bottom">
       <div></div>
       <button type="button" class="btn-next-lesson" onclick="openLesson()">
         Siguiente lección →<br>
-        <span>Los 5 errores al implementar IA</span>
+        <span>Los 5 errores que cometen las empresas al implementar IA</span>
       </button>
     </div>
 
@@ -2745,11 +3086,11 @@ transition: all 0.2s;
     if (correct) {
       btn.classList.add('correct');
       fb.className = 'lesson-quiz-feedback ok';
-      fb.innerHTML = '✓ ¡Correcto! La IA Generativa (ChatGPT, Claude) + Automatización (Make, Zapier) son las que más impacto tienen en el trabajo de oficina hoy. Son las que verás en casi todos los casos reales de este curso.';
+      fb.innerHTML = '✓ ¡Correcto! Según el WEF Future of Jobs 2025, la IA creará 170 millones de nuevos empleos y eliminará 92 millones — un saldo neto positivo de 78 millones de puestos. El mensaje es claro: la clave está en adaptarse y aprender a usarla.';
     } else {
       btn.classList.add('wrong');
       fb.className = 'lesson-quiz-feedback fail';
-      fb.innerHTML = '✗ No exactamente. La respuesta correcta es IA Generativa + Automatización. Son las que permiten a profesionales sin conocimientos técnicos transformar su trabajo con herramientas accesibles hoy.';
+      fb.innerHTML = '✗ No exactamente. El WEF Future of Jobs 2025 indica que la IA creará 170 millones de nuevos empleos y eliminará 92 millones, con un saldo neto positivo de 78 millones. Los empleos que desaparecen son los más rutinarios; los que nacen requieren criterio y habilidades digitales.';
     }
     fb.style.display = 'block';
   }
